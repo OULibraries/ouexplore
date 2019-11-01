@@ -40,6 +40,13 @@ html, body {
   text-transform: uppercase;
   letter-spacing: 0.2em; }
 
+.help-block, .success-message {
+  color: #841617;}
+
+.hide-message {
+  color: #841617; 
+  display: none;}
+
 .btn {
   border: 0.25rem solid;
   font-size: 1.3rem;
