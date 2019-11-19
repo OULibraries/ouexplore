@@ -258,6 +258,18 @@ $( document ).ready( function(){
 			});
 			e.preventDefault();
 		});
+
+		$( document ).on( 'click', 'a[href="#publications"]', function(e){
+			$.ajax({
+				url: 'tpl/tpl-publications.php',
+				dataType: 'html'
+			}).done( function( data ){
+				$('[role="main"]').html( data );
+				$('html, body').addClass('unlocked');
+				$('.menu').removeClass('reveal');
+			});
+			e.preventDefault();
+		});
 		
 
 	//  Functions

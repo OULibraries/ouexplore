@@ -35,7 +35,7 @@ html, body {
 [role="main"] > section {
   min-height: 100vh; }
 
-.primaryFont, nav > div a, .introMessage .introBannerMiddle, .pillarTitles > div > div h2 span:nth-of-type(2), .pillarTitles > div > div h2 span:nth-of-type(3), article #stats figure, article #stats figcaption, article #highlights:before, article .highlightItem > div h3, #sidebar > div h3, .menu ul li a, #contribute .container > div:nth-of-type(1) h2, #contact .container > div:nth-of-type(1) h2 {
+.primaryFont, nav > div a, .introMessage .introBannerMiddle, .pillarTitles > div > div h2 span:nth-of-type(2), .pillarTitles > div > div h2 span:nth-of-type(3), article #stats figure, article #stats figcaption, article #highlights:before, article .highlightItem > div h3, #sidebar > div h3, .menu ul li a, #contribute .container > div:nth-of-type(1) h2, #contact .container > div:nth-of-type(1) h2, #publications .container > div:nth-of-type(1) h2 {
   font-family: 'League Gothic';
   text-transform: uppercase;
   letter-spacing: 0.2em; }
@@ -971,6 +971,60 @@ article {
         line-height: 1.7;
         margin-top: 10rem; }
         #contribute .container > div:nth-of-type(2) p {
+          margin: 0 0 2rem 0; }
+
+
+#publications {
+  -webkit-box-shadow: inset 0 0 0 1.5rem;
+  box-shadow: inset 0 0 0 1.5rem;
+  background: #f1ede7;
+  background: #5d1112; }
+  #publications .container {
+    padding: 15rem 8rem 8rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    max-width: 140rem;
+    margin: 0 auto; }
+    #publications .container > div {
+      -ms-flex-preferred-size: 50%;
+      flex-basis: 50%; }
+      #publications .container > div:nth-of-type(1) h2 {
+        font-size: 6rem;
+        color: #7b1516;
+        margin: 0 0 2rem 0;
+        font-weight: 100;
+        color: #fff; }
+      #publications .container > div:nth-of-type(1) img {
+        width: 100%;
+        height: auto;
+        display: block; }
+      #publications .container > div:nth-of-type(1) a {
+        border: 0.25rem solid;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 2rem;
+        display: inline-block;
+        color: #7b1516;
+        color: #fff;
+        margin: 0 0 6rem 0; }
+      #publications .container > div:nth-of-type(2) {
+        background: #000;
+        padding: 6rem;
+        font-size: 1.7rem;
+        line-height: 1.7;
+        margin-top: 10rem; }
+        #publications .container > div:nth-of-type(2) p {
           margin: 0 0 2rem 0; }
 
 #contact {

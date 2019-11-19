@@ -34,6 +34,7 @@
                     <!-- <li><a href="#issues">Issues</a></li> -->
                     <li><a href="#contribute">Contribute</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#publications">Publications</a></li>
                 </ul>
                 <a href="#" class="close"><i class="fa fa-times"></i></a>
             </div>
