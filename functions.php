@@ -17,9 +17,9 @@
         $data = json_decode( $json, TRUE);
         $data = array_reverse( $data );
         
-        // echo '<pre>';
-        // print_r( $data );
-        // echo '<pre>';
+         // echo '<pre>';
+         // print_r( $data );
+         // echo '<pre>';
         
         foreach( $data as $key => $value){
             if( $value['vid'] == 2){
@@ -38,6 +38,9 @@
 
                 $imgURL = 'https://explore.php7dev.lib.ou.edu/sites/default/files/' . $data['field_pillar_image']['und'][0]['filename'];
                 
+                //  echo '<pre>';
+                //  print_r($imgURL);
+                //  echo '<pre>';
                 
                 if( $type == 'image' ){
                     $markup = (
