@@ -635,9 +635,12 @@ article {
 				padding: 1.5rem;
 				box-shadow: 0 0.5rem 1rem rgba(#c5c1bb, 0.6);
 				width: 95%;
-				height: auto;
+				//height: auto;
 				display: block;
 				background: #fff;
+				height: 385px;
+				object-fit: cover;
+				object-position: 100% 0;
 			}
 		}
 		> div{

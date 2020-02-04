@@ -38,6 +38,7 @@
 <article>
     <section id="opening">
         <div class="container"></div>
+        <div id="disclaimer">* The metrics below are for the 2018 - 2019 school year.</div>
     </section>
     <section id="stats"></section>
     <section id="highlights">

@@ -84,10 +84,11 @@ $( document ).ready( function(){
 			var storyImage = $(this).parents('.highlightItem').find('img').attr('src');
 			var storyTitle = $(this).parents('.highlightItem').find('h3').html();
 			var storyBody  = $(this).parents('.highlightItem').find('.body').html();
-
+			var storyDescription = $(this).parents('.highlightItem').find('.fullDescription').html();
+console.log('story body: ' + storyDescription);
 			$('#sidebar .content').empty();
 			$('#sidebar img').attr( 'src', storyImage );
-			$('#sidebar .content').append( '<h3>'+storyTitle+'</h3>' + storyBody );
+			$('#sidebar .content').append( '<h3>'+storyTitle+'</h3>' + storyBody + storyDescription);
 
 			$('.overlay, #sidebar').addClass('reveal');
 			e.preventDefault();
@@ -172,7 +173,7 @@ $( document ).ready( function(){
 				},
 				dataType: 'json'
 			}).done( function( data ){
-				
+				console.log('All data: ' , data);
 				// display description
 				$('#opening .container').html( data.description );
 				
@@ -185,6 +186,7 @@ $( document ).ready( function(){
 				// display highlights
 				$('#highlights').empty();
 				$.each( data.stories, function( key, story ){
+					console.log(story);
 					$('#highlights').append(
 						'<div class="highlightItem">'+
 							'<a href="#"><img src="'+story.image+'" /></a>'+
@@ -192,12 +194,23 @@ $( document ).ready( function(){
 								'<h3>'+story.title+'</h3>'+
 								'<a href="#" data-id="'+story.id+'">Read More</a>'+
 							'</div>'+
-							'<div class="body" style="text-indent: -9999px; position: absolute; visibility: hidden;>'+
+							'<div class="body" style="text-indent: -9999px; position: absolute; visibility: hidden;">'+
 								story.body+
 							'</div>'+
+						    '<hr>' +
+							'<div class="fullDescription" style="text-indent: -9999px; position: absolute; visibility: hidden;">'+
+								'<hr>'+
+						 		'<br>'+
+								story.description+
+							'</div>'+
+						    '<div class="moreImages" style="text-indent: -9999px; position: absolute; visibility: hidden;">' +
+						'</div>'+
 						'</div>'
 					);
 				});
+				$('#highlights').append(
+                        '<a class="read-articles" href="https://libraries.ou.edu/stories">View more examples of the Libraries' + "\'" + ' impact</a>'
+				);
 
 				//  Reveal content
 				$('.back, article').addClass('reveal');
