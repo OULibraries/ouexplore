@@ -17,10 +17,6 @@
         $data = json_decode( $json, TRUE);
         $data = array_reverse( $data );
         
-         // echo '<pre>';
-         // print_r( $data );
-         // echo '<pre>';
-        
         foreach( $data as $key => $value){
             if( $value['vid'] == 2){
                 
@@ -133,3 +129,30 @@
             }
         }
     }
+
+function curl_get_contents($url) {
+    // Initiate the curl session
+    $ch = curl_init();
+    // Set the URL
+    curl_setopt($ch, CURLOPT_URL, $url);
+    // Removes the headers from the output
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    // Return the output instead of displaying it directly
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+//    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
+    // Execute the curl session
+    $output = curl_exec($ch);
+    header('Content-type: application/json');
+//    error_log('blah blah: ' . $output);
+    // Close the curl session
+    curl_close($ch);
+    // Return the output as a variable
+    return $output;
+}
