@@ -12,7 +12,7 @@ include str_replace('/models','',__DIR__) . '/functions.php';
     
     # Get Pillar Details
     $nidPillar  = $_GET['nid'];
-    $urlPillar  = 'http://explore.php7dev.lib.ou.edu/restep/taxonomy_term/'.$nidPillar;
+    $urlPillar  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/'.$nidPillar;
     $jsonPillar = file_get_contents( $urlPillar );
     $dataPillar = json_decode( $jsonPillar, TRUE);
 
@@ -21,7 +21,7 @@ $i = 0;
 $j = 1;
 $k = 0;
 
-$urlStories  = 'https://explore.php7dev.lib.ou.edu/restep/node?page=' . $i . '&pagesize=200';
+$urlStories  = 'https://exploredata.libraries.ou.edu/restep/node?page=' . $i . '&pagesize=200';
 
 while ($j < 2 & $k < 3) {
     # Get Associated Stories
@@ -79,21 +79,21 @@ while ($j < 2 & $k < 3) {
                     'title' => $dataSingleStory['title'],
                     'body' => $dataSingleStory['body']['und'][0]['value'],
                     'description' => $description,
-                    'image' => 'https://explore.php7dev.lib.ou.edu/sites/default/files/' . $dataSingleStory['field_cover_image']['und'][0]['filename'],
+                    'image' => 'https://exploredata.libraries.ou.edu/sites/default/files/' . $dataSingleStory['field_cover_image']['und'][0]['filename'],
                     'multiImage' => $multiImageArray,
                 )
             );
         }
         if ($k == 3) break;
     }
-    $urlStories = 'https://explore.php7dev.lib.ou.edu/restep/node?page=' . $i;
+    $urlStories = 'https://exploredata.libraries.ou.edu/restep/node?page=' . $i;
 }
     
     # Create array of Pillar information.
     $arr = array(
         'title' => $dataPillar['name'],
         'description' => str_replace(array("\n", "\r","\t"), '', $dataPillar['description']),
-        'image' => 'https://explore.php7dev.lib.ou.edu/sites/default/files/'.$dataPillar['field_pillar_image']['und'][0]['filename'],
+        'image' => 'https://exploredata.libraries.ou.edu/sites/default/files/'.$dataPillar['field_pillar_image']['und'][0]['filename'],
         'stats' => array(
             array(
                 'number' => $dataPillar['field_by_the_numbers_number_1']['und'][0]['value'],
