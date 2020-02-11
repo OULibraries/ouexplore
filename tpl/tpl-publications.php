@@ -18,7 +18,7 @@
                 <h3> Annual Reports</h3>
                 <div>
                 <h4>first annual report</h4>
-                    <img class="pub-img" src="https://explore.php7dev.lib.ou.edu/sites/default/files/nKtaLHyQ.jpeg">
+                    <img class="pub-img" src="https://exploredata.libraries.ou.edu/sites/default/files/nKtaLHyQ.jpeg">
                     <p>first annual report stuff</p>
 
                 </div>

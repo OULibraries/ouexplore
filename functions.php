@@ -12,7 +12,7 @@
             'allow_self_signed'  => TRUE
         )));
         
-        $url  = 'http://explore.php7dev.lib.ou.edu/restep/taxonomy_term/';
+        $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/';
         $json = file_get_contents( $url );
         $data = json_decode( $json, TRUE);
         $data = array_reverse( $data );
@@ -28,11 +28,11 @@
                     'allow_self_signed'  => TRUE
                 )));
                 
-                $url  = 'http://explore.php7dev.lib.ou.edu/restep/taxonomy_term/'.$value['tid'];
+                $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/'.$value['tid'];
                 $json = file_get_contents( $url );
                 $data = json_decode( $json, TRUE);
 
-                $imgURL = 'https://explore.php7dev.lib.ou.edu/sites/default/files/' . $data['field_pillar_image']['und'][0]['filename'];
+                $imgURL = 'https://exploredata.libraries.ou.edu/sites/default/files/' . $data['field_pillar_image']['und'][0]['filename'];
                 
                 //  echo '<pre>';
                 //  print_r($imgURL);
@@ -96,7 +96,7 @@
             'allow_self_signed'  => TRUE
         )));
         
-        $url  = 'http://explore.php7dev.lib.ou.edu/restep/taxonomy_term/';
+        $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/';
         $json = file_get_contents( $url );
         $data = json_decode( $json, TRUE);
         $data = array_reverse( $data );
@@ -112,13 +112,13 @@
                     'allow_self_signed'  => TRUE
                 )));
                 
-                $url  = 'http://explore.php7dev.lib.ou.edu/restep/taxonomy_term/'.$value['tid'];
+                $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/'.$value['tid'];
                 $json = file_get_contents( $url );
                 $data = json_decode( $json, TRUE);
 
                 $markup = (
                     '<div class="issueItem">'.
-                        '<div class="img" style="background: url(https://explore.php7dev.lib.ou.edu/sites/default/files/'.$data['field_issue_image']['und'][0]['filename'].') no-repeat center center / cover;"></div>'.
+                        '<div class="img" style="background: url(https://exploredata.libraries.ou.edu/sites/default/files/'.$data['field_issue_image']['und'][0]['filename'].') no-repeat center center / cover;"></div>'.
                         '<div><h2><a href="#">'.$data['name'].'</a></h2><div class="description">'.$data['description'].'</div></div>'.
                     '</div>'
                 );

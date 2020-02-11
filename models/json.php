@@ -65,7 +65,7 @@ while ($j < 2 & $k < 3) {
             # Uncomment if you want to start using multiple images
 //            if ($dataSingleStory['field_more_images']) {
 //                foreach ($dataSingleStory['field_more_images']['und'] as $multiImage) {
-//                    array_push($multiImageArray, 'https://explore.php7dev.lib.ou.edu/sites/default/files/' . $multiImage['filename']);
+//                    array_push($multiImageArray, 'https://exploredata.libraries.ou.edu/sites/default/files/' . $multiImage['filename']);
 //                }
 //            }
 
