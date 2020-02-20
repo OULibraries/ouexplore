@@ -3,6 +3,7 @@
     <section id="contact">
         <div class="container">
             <div>
+                <h1 style="display: none">A contact form</h1>
                 <h2>Contact <br>OU Libraries</h2>
                 <p>
                     <strong>OU University Libraries</strong><br>
@@ -13,20 +14,20 @@
             <div>
                 <form id="contactsubmit" action="/models/contactsubmission.php" method="post" >
                     <div id="name-group" class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" name="cf_name" />
+                        <label for="fullname">Full Name</label>
+                        <input type="text" name="cf_name" id="fullname"/>
                     </div>
                     <div id="email-group" class="form-group">
-                        <label>Email</label>
-                        <input type="text" name="cf_email"/>
+                        <label for="emailfield">Email</label>
+                        <input type="text" name="cf_email" id="emailfield"/>
                     </div>
                     <div id="subject-group" class="form-group">
-                        <label>Subject</label>
-                        <input type="text" name="cf_subject"/>
+                        <label for="subject">Subject</label>
+                        <input type="text" name="cf_subject" id="subject"/>
                     </div>
                     <div id="message-group" class="form-group">
-                        <label>Message</label>
-                        <textarea name="cf_message"></textarea>
+                        <label for="message">Message</label>
+                        <textarea name="cf_message" id="message"></textarea>
                     </div>
                   <!--  <a href="#" class="btn" name="submit" id="contact-submit" data-submit="...Sending">Make a Gift</a>
 -->  

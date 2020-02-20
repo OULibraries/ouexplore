@@ -1,6 +1,6 @@
 <?php include str_replace('/tpl','',__DIR__) . '/functions.php'; ?>
 <!doctype html>
-    <html>
+    <html lang="en">
         <head>
             <title>Explore OU Libraries</title>
 
@@ -20,11 +20,11 @@
 
             <!-- Navigation -->
             <nav role="navigation">
-                <a href="#" class="back"><i class="fa fa-arrow-left"></i></a>
-                <a href="" class="logo"><img src="img/ou-logo-color.png" /></a>
+                <a href="#" class="back"><span style="display:none;">Back Button</span><i class="fa fa-arrow-left"></i></a>
+                <a href="" class="logo"><img src="img/ou-logo-color.png" alt="OU Logo"/></a>
                 <div>
-                    <a href="#contribute">Contribute</a>
-                    <a href="#" data-action="openMenu"><i class="fa fa-bars"></i></a>
+                    <a href="#" id="contribution">Contribute</a>
+                    <a href="#" data-action="openMenu"><span style="display:none;">Menu</span><i class="fa fa-bars"></i></a>
                 </div>
             </nav>
 
@@ -32,11 +32,11 @@
                 <ul>
                     <li><a href="">Explore</a></li>
                     <!-- <li><a href="#issues">Issues</a></li> -->
-                    <li><a href="#contribute">Contribute</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" id="contribution">Contribute</a></li>
+                    <li><a href="#" id="contacted">Contact</a></li>
 <!--                    <li><a href="#publications">Publications</a></li>-->
                 </ul>
-                <a href="#" class="close"><i class="fa fa-times"></i></a>
+                <a href="#" class="close"><span style="display:none;">Close</span><i class="fa fa-times"></i></a>
             </div>
 
             <!-- Main -->

@@ -189,10 +189,10 @@ console.log('story body: ' + storyDescription);
 					console.log(story);
 					$('#highlights').append(
 						'<div class="highlightItem">'+
-							'<a href="#"><img src="'+story.image+'" /></a>'+
+							'<a href="#"><img src="'+story.image+'" alt="image for '+story.title+'"/></a>'+
 							'<div>'+
 								'<h3>'+story.title+'</h3>'+
-								'<a href="#" data-id="'+story.id+'">Read More</a>'+
+								'<a href="#" data-id="'+story.id+'">Read This Story</a>'+
 							'</div>'+
 							'<div class="body" style="text-indent: -9999px; position: absolute; visibility: hidden;">'+
 								story.body+
@@ -236,7 +236,7 @@ console.log('story body: ' + storyDescription);
 
 	//  Load Templates from links
 		
-		$( document ).on( 'click', 'a[href="#contribute"]', function(e){
+		$( document ).on( 'click', '#contribution', function(e){
 			$.ajax({
 				url: 'tpl/tpl-contribute.php',
 				dataType: 'html'
@@ -248,7 +248,7 @@ console.log('story body: ' + storyDescription);
 			e.preventDefault();
 		});
 
-		$( document ).on( 'click', 'a[href="#contact"]', function(e){
+		$( document ).on( 'click', '#contacted', function(e){
 			$.ajax({
 				url: 'tpl/tpl-contact.php',
 				dataType: 'html'
