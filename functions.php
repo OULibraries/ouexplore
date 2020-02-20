@@ -42,7 +42,7 @@
                     $markup = (
                         '<div>'.
                             '<a href="#" data-action="openPillar" data-pillar-id="'.$data['tid'].'">'.
-                                '<img src="'.$imgURL.'" />'.
+                                '<img src="'.$imgURL.'" alt="Pillar ' . $value['tid'] . ' "/>'.
                             '</a>'.
                         '</div>'
                     );

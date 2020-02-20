@@ -3,12 +3,12 @@
 
         <div class="introMessage">
             <div class="introBannerTop">
-                <img class="bannerTail" src="img/banner-tail.svg" />
+                <img class="bannerTail" src="img/banner-tail.svg" alt="The second part of the banner"/>
                 The heart of every great university is its
-                <img class="bannerHead" src="img/banner-head.svg" />
+                <img class="bannerHead" src="img/banner-head.svg" alt="The first part of the banner"/>
             </div>
             <div class="introBannerMiddle">
-                <div>
+                <div><h1 style="display: none">Explore OU Libraries</h1>
                     <span>L</span>
                     <span>I</span>
                     <span>B</span>
@@ -28,16 +28,16 @@
                 </div>
             </div>
             <div class="introBannerBottom">
-                <img class="bannerTail" src="img/banner-tail.svg" />
+                <img class="bannerTail" src="img/banner-tail.svg" alt="the strategic vision for ours"/>
                 the strategic vision for ours
-                <img class="bannerHead" src="img/banner-head.svg" />
+                <img class="bannerHead" src="img/banner-head.svg" alt="scroll down for more information"/>
             </div>
         </div>
 
         <a href="#" class="continue" data-action="loadPillars">
             
             Start Scrolling
-            <img src="img/mouse.svg" />
+            <img src="img/mouse.svg" alt="mouse icon indicating to scroll down"/>
         </a>
 
         
