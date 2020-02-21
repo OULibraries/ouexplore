@@ -85,7 +85,7 @@ $( document ).ready( function(){
 			var storyTitle = $(this).parents('.highlightItem').find('h3').html();
 			var storyBody  = $(this).parents('.highlightItem').find('.body').html();
 			var storyDescription = $(this).parents('.highlightItem').find('.fullDescription').html();
-console.log('story body: ' + storyDescription);
+console.log('story body: ' + storyImage);
 			$('#sidebar .content').empty();
 			$('#sidebar img').attr( 'src', storyImage );
 			$('#sidebar .content').append( '<h3>'+storyTitle+'</h3>' + storyBody + storyDescription);
@@ -189,7 +189,7 @@ console.log('story body: ' + storyDescription);
 					console.log(story);
 					$('#highlights').append(
 						'<div class="highlightItem">'+
-							'<a href="#"><img src="'+story.image+'" alt="image for '+story.title+'"/></a>'+
+							'<a href="#"><img src="'+story.image+'" /></a>'+
 							'<div>'+
 								'<h3>'+story.title+'</h3>'+
 								'<a href="#" data-id="'+story.id+'">Read This Story</a>'+
