@@ -189,7 +189,7 @@ console.log('story body: ' + storyImage);
 					console.log(story);
 					$('#highlights').append(
 						'<div class="highlightItem">'+
-							'<a href="#"><img src="'+story.image+'" /></a>'+
+							'<a href="#"><img src="'+story.image+'" alt="image for '+story.title+'"/></a>'+
 							'<div>'+
 								'<h3>'+story.title+'</h3>'+
 								'<a href="#" data-id="'+story.id+'">Read This Story</a>'+
