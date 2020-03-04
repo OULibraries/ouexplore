@@ -38,6 +38,13 @@ $(document).ready(function () {
 	setTimeout(function () {
 		$('.logo, nav > div, #intro').addClass('reveal');
 	}, 7000);
+	
+	setTimeout( function(){
+		$('.continue').addClass('reveal');
+		$('.continue').css({
+			'animation':'pulse 4s infinite'
+		})
+	}, 8000 );
 
 	//  Load Pillars
 	$('.continue').on('click', function (e) {
