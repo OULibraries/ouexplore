@@ -35,8 +35,11 @@
   </div>
 
   <a href="#" class="continue" data-action="loadPillars">
+            
     Start Scrolling
     <img id="mouse_icon" src="img/mouse.svg" alt="mouse icon indicating to scroll down"/>
     <img id="touch_icon" class="img_hidden" src="img/touch.svg" alt="touch icon indicating to scroll down"/>
   </a>
+  
+  
 </section>
