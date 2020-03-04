@@ -39,6 +39,13 @@ $(document).ready(function () {
 		$('.logo, nav > div, #intro').addClass('reveal');
 	}, 7000);
 
+	setTimeout( function(){
+		$('.continue').addClass('reveal');
+		$('.continue').css({
+			'animation':'pulse 4s infinite'
+		})
+	}, 8000 );
+
 	//  Load Pillars
 	$('.continue').on('click', function (e) {
 		// Remove intro content
@@ -102,6 +109,24 @@ $(document).ready(function () {
 		$('.menu').removeClass('reveal');
 	});
 
+	$( document ).on( 'click', '.highlightItem a', function(){
+		var storyImage = $(this).parents('.highlightItem').find('img').attr('src');
+		var storyTitle = $(this).parents('.highlightItem').find('h3').html();
+		var storyBody  = $(this).parents('.highlightItem').find('.body').html();
+		var storyDescription = $(this).parents('.highlightItem').find('.fullDescription').html();
+		console.log('story body: ' + storyImage);
+		$('#sidebar .content').empty();
+		$('#sidebar img').attr( 'src', storyImage );
+		$('#sidebar .content').append( '<h3>'+storyTitle+'</h3>' + storyBody + storyDescription);
+
+		$('.overlay, #sidebar').addClass('reveal');
+		// e.preventDefault();
+	});
+
+	$( document ).on( 'click', '#sidebar .close, .overlay', function(){
+		$('.overlay, #sidebar').removeClass('reveal');
+		// e.preventDefault();
+	});
 	//  Animate Bg on scroll
 	$(window).on('scroll touchmove', function (e) {
 		var scrollPos = $(this).scrollTop();
@@ -126,63 +151,63 @@ $(document).ready(function () {
 
 	var el = document.getElementsByClassName("main_container")[0];
 	ontouch(el, function (evt, dir, phase, swipetype, distance) {
-		if (evt.target.parentElement.parentNode.className == "highlightItem") {
-			var storyImage = $(evt.target).parents('.highlightItem').find('img').attr('src');
-			var storyTitle = $(evt.target).parents('.highlightItem').find('h3').html();
-			var storyBody = $(evt.target).parents('.highlightItem').find('.body').html();
-			var storyDescription = $(evt.target).parents('.highlightItem').find('.fullDescription').html();
-			console.log('story body: ' + storyImage);
-			$('#sidebar .content').empty();
-			$('#sidebar img').attr('src', storyImage);
-			$('#sidebar .content').append('<h3>' + storyTitle + '</h3>' + storyBody + storyDescription);
+// 		if (evt.target.parentElement.parentNode.className == "highlightItem") {
+// 			var storyImage = $(evt.target).parents('.highlightItem').find('img').attr('src');
+// 			var storyTitle = $(evt.target).parents('.highlightItem').find('h3').html();
+// 			var storyBody = $(evt.target).parents('.highlightItem').find('.body').html();
+// 			var storyDescription = $(evt.target).parents('.highlightItem').find('.fullDescription').html();
+// 			console.log('story body: ' + storyImage);
+// 			$('#sidebar .content').empty();
+// 			$('#sidebar img').attr('src', storyImage);
+// 			$('#sidebar .content').append('<h3>' + storyTitle + '</h3>' + storyBody + storyDescription);
 
-			$('.overlay, #sidebar').addClass('reveal');
-		}
-		else if (evt.target.parentElement.className == 'content' || evt.target.className == 'read-articles' || evt.target.parentElement.parentNode.parentElement.id == 'contribute') {
-			window.location.href = evt.target.href;
-		}
-		else if (evt.target.parentElement.parentNode.className == 'close') {
-			$('.overlay, #sidebar').removeClass('reveal');
-		}
-		else if (evt.target.parentElement.className == 'form-group') {
-			return false;
-		}
-		else if (evt.target.parentElement.id == 'contactsubmit') {
-			$('#contactsubmit')[0].submit();
-		}
-		else {
-			var deltaY;
-			if (phase == 'end') {
-				if (!$('body').hasClass('unlocked') && !$('.introBannerMiddle').length) {
-					var deltaY;
+// 			$('.overlay, #sidebar').addClass('reveal');
+// 		}
+// 		else if (evt.target.parentElement.className == 'content' || evt.target.className == 'read-articles' || evt.target.parentElement.parentNode.parentElement.id == 'contribute') {
+// 			window.location.href = evt.target.href;
+// 		}
+// 		else if (evt.target.parentElement.parentNode.className == 'close') {
+// 			$('.overlay, #sidebar').removeClass('reveal');
+// 		}
+// 		else if (evt.target.parentElement.className == 'form-group') {
+// 			return false;
+// 		}
+// 		else if (evt.target.parentElement.id == 'contactsubmit') {
+// 			$('#contactsubmit')[0].submit();
+// 		}
+// 		else {
+		var deltaY;
+		if (phase == 'end') {
+			if (!$('body').hasClass('unlocked') && !$('.introBannerMiddle').length) {
+				var deltaY;
 
-					if (swipetype == 'right' || swipetype == 'down') {
-						deltaY = 1;
-					}
-					else if (swipetype == 'left' || swipetype == 'up') {
-						deltaY = -1;
-					}
-					else {
-						deltaY = 0;
-					}
-
-					if (deltaY != 0) {
-						cyclePillars(deltaY);
-					}
-					else {
-						if (evt.srcElement.localName == 'span') {
-							var event = jQuery.Event('click');
-							event.target = $(el).find('[data-action="openPillar"]')[0];
-							$(el).trigger(event);
-						}
-					}
+				if (swipetype == 'right' || swipetype == 'down') {
+					deltaY = 1;
+				}
+				else if (swipetype == 'left' || swipetype == 'up') {
+					deltaY = -1;
+				}
+				else {
+					deltaY = 0;
 				}
 
-				if ($('.introBannerMiddle > div:nth-of-type(2)').hasClass('reveal') && swipetype == 'up') {
-					$('[data-action="loadPillars"]').click();
+				if (deltaY != 0) {
+					cyclePillars(deltaY);
+				}
+				else {
+					if (evt.srcElement.localName == 'span') {
+						var event = jQuery.Event('click');
+						event.target = $(el).find('[data-action="openPillar"]')[0];
+						$(el).trigger(event);
+					}
 				}
 			}
+
+			if ($('.introBannerMiddle > div:nth-of-type(2)').hasClass('reveal') && swipetype == 'up') {
+				$('[data-action="loadPillars"]').click();
+			}
 		}
+		//}
 	});
 
 	//  Fetch pillar contents on click
@@ -389,7 +414,7 @@ function ontouch(el, callback) {
 		}
 
 	touchsurface.addEventListener('touchstart', function (e) {
-		if (e.target.parentElement.className == 'form-group') {
+		if (e.target.parentElement.className == 'form-group' || $(this).children(1).hasClass('exit') || $(this).children(1).prop('id') == 'contribute' || e.target.parentElement.id == 'contactsubmit') {
 			return false;
 		}
 		var touchobj = e.changedTouches[0]
@@ -408,7 +433,7 @@ function ontouch(el, callback) {
 	}, {passive: false})
 
 	touchsurface.addEventListener('touchmove', function (e) {
-		if (e.target.parentElement.className == 'form-group') {
+		if (e.target.parentElement.className == 'form-group' || $(this).children(1).hasClass('exit') || $(this).children(1).prop('id') == 'contribute' || e.target.parentElement.id == 'contactsubmit') {
 			return false;
 		}
 		var touchobj = e.changedTouches[0]
@@ -417,7 +442,7 @@ function ontouch(el, callback) {
 		distY = touchobj.pageY - startY // get vertical dist traveled by finger
 																		// while in contact with surface
 		if (Math.abs(distX) > Math.abs(distY)) { // if distance traveled horizontally is greater than vertically, consider
-																						 // this a horizontal movement
+			// this a horizontal movement
 			dir = (distX < 0) ? 'left' : 'right'
 			handletouch(e, dir, 'move', swipeType, distX) // fire callback function
 																										// with params
@@ -437,7 +462,7 @@ function ontouch(el, callback) {
 	}, {passive: false})
 
 	touchsurface.addEventListener('touchend', function (e) {
-		if (e.target.parentElement.className == 'form-group') {
+		if (e.target.parentElement.className == 'form-group' || $(this).children(1).hasClass('exit') || $(this).children(1).prop('id') == 'contribute' || e.target.parentElement.id == 'contactsubmit') {
 			return false;
 		}
 		var touchobj = e.changedTouches[0]
