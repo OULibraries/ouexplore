@@ -158,31 +158,6 @@ $(document).ready(function () {
 
 	var el = document.getElementsByClassName("main_container")[0];
 	ontouch(el, function (evt, dir, phase, swipetype, distance) {
-// 		if (evt.target.parentElement.parentNode.className == "highlightItem") {
-// 			var storyImage = $(evt.target).parents('.highlightItem').find('img').attr('src');
-// 			var storyTitle = $(evt.target).parents('.highlightItem').find('h3').html();
-// 			var storyBody = $(evt.target).parents('.highlightItem').find('.body').html();
-// 			var storyDescription = $(evt.target).parents('.highlightItem').find('.fullDescription').html();
-// 			console.log('story body: ' + storyImage);
-// 			$('#sidebar .content').empty();
-// 			$('#sidebar img').attr('src', storyImage);
-// 			$('#sidebar .content').append('<h3>' + storyTitle + '</h3>' + storyBody + storyDescription);
-
-// 			$('.overlay, #sidebar').addClass('reveal');
-// 		}
-// 		else if (evt.target.parentElement.className == 'content' || evt.target.className == 'read-articles' || evt.target.parentElement.parentNode.parentElement.id == 'contribute') {
-// 			window.location.href = evt.target.href;
-// 		}
-// 		else if (evt.target.parentElement.parentNode.className == 'close') {
-// 			$('.overlay, #sidebar').removeClass('reveal');
-// 		}
-// 		else if (evt.target.parentElement.className == 'form-group') {
-// 			return false;
-// 		}
-// 		else if (evt.target.parentElement.id == 'contactsubmit') {
-// 			$('#contactsubmit')[0].submit();
-// 		}
-// 		else {
 		var deltaY;
 		if (phase == 'end') {
 			if (!$('body').hasClass('unlocked') && !$('.introBannerMiddle').length) {
@@ -202,10 +177,9 @@ $(document).ready(function () {
 					cyclePillars(deltaY);
 				}
 				else {
-					if (evt.srcElement.localName == 'span') {
-						var event = jQuery.Event('click');
-						event.target = $(el).find('[data-action="openPillar"]')[0];
-						$(el).trigger(event);
+					if ($('.main_container div.wrapper').hasClass('reveal') === true) {
+						var pillarID = $('.pillars div.active a').data('pillar-id');
+						openPillarPage(pillarID);
 					}
 				}
 			}
@@ -215,67 +189,6 @@ $(document).ready(function () {
 			}
 		}
 		//}
-	});
-
-	//  Fetch pillar contents on click
-	$('.main_container').on('click', '[data-action="openPillar"]', function (e) {
-		$('.pillars, .pillarTitles').addClass('minimize');
-		$('.logo, nav > div').removeClass('reveal');
-		$('.wrapper, .bg').addClass('exit');
-		$('html, body').addClass('unlocked');
-
-		var pillarID = $(this).attr('data-pillar-id');
-		$.ajax({
-			url: 'models/json.php',
-			data: {
-				nid: pillarID
-			},
-			dataType: 'json'
-		}).done(function (data) {
-			console.log('All data: ', data);
-			// display description
-			$('#opening .container').html(data.description);
-
-			// display stats
-			$('#stats').empty();
-			$.each(data.stats, function (key, stat) {
-				$('#stats').append('<div><figure>' + stat.number + '</figure><figcaption>' + stat.label + '</figcaption></div>');
-			});
-
-			// display highlights
-			$('#highlights').empty();
-			$.each(data.stories, function (key, story) {
-				console.log(story);
-				$('#highlights').append(
-					'<div class="highlightItem">' +
-					'<a href="#"><img src="' + story.image + '" alt="image for ' + story.title + '"/></a>' +
-					'<div>' +
-					'<h3>' + story.title + '</h3>' +
-					'<a href="#" data-id="' + story.id + '">Read This Story</a>' +
-					'</div>' +
-					'<div class="body" style="text-indent: -9999px; position: absolute; visibility: hidden;">' +
-					story.body +
-					'</div>' +
-					'<hr>' +
-					'<div class="fullDescription" style="text-indent: -9999px; position: absolute; visibility: hidden;">' +
-					'<hr>' +
-					'<br>' +
-					story.description +
-					'</div>' +
-					'<div class="moreImages" style="text-indent: -9999px; position: absolute; visibility: hidden;">' +
-					'</div>' +
-					'</div>'
-				);
-			});
-
-			$('#highlights').append(
-				'<a class="read-articles" href="https://libraries.ou.edu/stories">View more examples of the Libraries' + "\'" + ' impact</a>'
-			);
-
-			//  Reveal content
-			$('.back, article').addClass('reveal');
-		});
-		//e.preventDefault();
 	});
 
 	//  Close Pillar Content
@@ -534,4 +447,62 @@ function is_touch_device4() {
 	// the join https://git.io/vznFH
 	var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
 	return mq(query);
+}
+
+function openPillarPage (pillarID) {
+	$('.pillars, .pillarTitles').addClass('minimize');
+	$('.logo, nav > div').removeClass('reveal');
+	$('.wrapper, .bg').addClass('exit');
+	$('html, body').addClass('unlocked');
+
+	$.ajax({
+		url: 'models/json.php',
+		data: {
+			nid: pillarID
+		},
+		dataType: 'json'
+	}).done(function (data) {
+		console.log('All data: ', data);
+		// display description
+		$('#opening .container').html(data.description);
+
+		// display stats
+		$('#stats').empty();
+		$.each(data.stats, function (key, stat) {
+			$('#stats').append('<div><figure>' + stat.number + '</figure><figcaption>' + stat.label + '</figcaption></div>');
+		});
+
+		// display highlights
+		$('#highlights').empty();
+		$.each(data.stories, function (key, story) {
+			console.log(story);
+			$('#highlights').append(
+				'<div class="highlightItem">' +
+				'<a href="#"><img src="' + story.image + '" alt="image for ' + story.title + '"/></a>' +
+				'<div>' +
+				'<h3>' + story.title + '</h3>' +
+				'<a href="#" data-id="' + story.id + '">Read This Story</a>' +
+				'</div>' +
+				'<div class="body" style="text-indent: -9999px; position: absolute; visibility: hidden;">' +
+				story.body +
+				'</div>' +
+				'<hr>' +
+				'<div class="fullDescription" style="text-indent: -9999px; position: absolute; visibility: hidden;">' +
+				'<hr>' +
+				'<br>' +
+				story.description +
+				'</div>' +
+				'<div class="moreImages" style="text-indent: -9999px; position: absolute; visibility: hidden;">' +
+				'</div>' +
+				'</div>'
+			);
+		});
+
+		$('#highlights').append(
+			'<a class="read-articles" href="https://libraries.ou.edu/stories">View more examples of the Libraries' + "\'" + ' impact</a>'
+		);
+
+		//  Reveal content
+		$('.back, article').addClass('reveal');
+	});
 }
