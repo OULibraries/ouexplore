@@ -421,7 +421,18 @@ function ontouch(el, callback) {
 		}
 
 	touchsurface.addEventListener('touchstart', function (e) {
-		if (e.target.parentElement.className == 'form-group' || $(this).children(1).hasClass('exit') || $(this).children(1).prop('id') == 'contribute' || e.target.parentElement.id == 'contactsubmit' || e.target.parentElement.id == 'contact' || e.target.parentElement.parentElement.id == 'contact' || e.target.parentElement.parentElement.parentElement.id == 'contact' || e.target.parentElement.parentElement.parentElement.parentElement.id == 'contact') {
+		if (
+			(e.target.matches('.form-group, .form-group *') && e.target.parentElement.className == 'form-group') ||
+			$(this).children(1).hasClass('exit') ||
+			$(this).children(1).prop('id') == 'contribute' ||
+			(e.target.matches('#contactsubmit, #contactsubmit *') && e.target.parentElement.id == 'contactsubmit') ||
+			(e.target.matches('#contact, #contact *') &&
+				(e.target.parentElement.id == 'contact' ||
+				e.target.parentElement.parentElement.id == 'contact' ||
+				e.target.parentElement.parentElement.parentElement.id == 'contact' ||
+				e.target.parentElement.parentElement.parentElement.parentElement.id == 'contact')
+			)
+		) {
 			return false;
 		}
 		var touchobj = e.changedTouches[0]
@@ -440,7 +451,18 @@ function ontouch(el, callback) {
 	}, {passive: false})
 
 	touchsurface.addEventListener('touchmove', function (e) {
-		if (e.target.parentElement.className == 'form-group' || $(this).children(1).hasClass('exit') || $(this).children(1).prop('id') == 'contribute' || e.target.parentElement.id == 'contactsubmit' || e.target.parentElement.id == 'contact' || e.target.parentElement.parentElement.id == 'contact' || e.target.parentElement.parentElement.parentElement.id == 'contact' || e.target.parentElement.parentElement.parentElement.parentElement.id == 'contact') {
+		if (
+			(e.target.matches('.form-group, .form-group *') && e.target.parentElement.className == 'form-group') ||
+			$(this).children(1).hasClass('exit') ||
+			$(this).children(1).prop('id') == 'contribute' ||
+			(e.target.matches('#contactsubmit, #contactsubmit *') && e.target.parentElement.id == 'contactsubmit') ||
+			(e.target.matches('#contact, #contact *') &&
+				(e.target.parentElement.id == 'contact' ||
+					e.target.parentElement.parentElement.id == 'contact' ||
+					e.target.parentElement.parentElement.parentElement.id == 'contact' ||
+					e.target.parentElement.parentElement.parentElement.parentElement.id == 'contact')
+			)
+		) {
 			return false;
 		}
 		var touchobj = e.changedTouches[0]
@@ -469,7 +491,18 @@ function ontouch(el, callback) {
 	}, {passive: false})
 
 	touchsurface.addEventListener('touchend', function (e) {
-		if (e.target.parentElement.className == 'form-group' || $(this).children(1).hasClass('exit') || $(this).children(1).prop('id') == 'contribute' || e.target.parentElement.id == 'contactsubmit' || e.target.parentElement.id == 'contact' || e.target.parentElement.parentElement.id == 'contact' || e.target.parentElement.parentElement.parentElement.id == 'contact' || e.target.parentElement.parentElement.parentElement.parentElement.id == 'contact') {
+		if (
+			(e.target.matches('.form-group, .form-group *') && e.target.parentElement.className == 'form-group') ||
+			$(this).children(1).hasClass('exit') ||
+			$(this).children(1).prop('id') == 'contribute' ||
+			(e.target.matches('#contactsubmit, #contactsubmit *') && e.target.parentElement.id == 'contactsubmit') ||
+			(e.target.matches('#contact, #contact *') &&
+				(e.target.parentElement.id == 'contact' ||
+					e.target.parentElement.parentElement.id == 'contact' ||
+					e.target.parentElement.parentElement.parentElement.id == 'contact' ||
+					e.target.parentElement.parentElement.parentElement.parentElement.id == 'contact')
+			)
+		) {
 			return false;
 		}
 		var touchobj = e.changedTouches[0]
