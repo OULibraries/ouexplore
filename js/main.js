@@ -6,6 +6,7 @@ $(document).ready(function () {
 		$('#mouse_icon').addClass('img_hidden');
 		$('#touch_icon').removeClass('img_hidden');
 		
+		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
 		if (window.innerHeight > window.innerWidth) {
 		    $('.continue').css('bottom', '32em');
 		}
@@ -160,6 +161,7 @@ $(document).ready(function () {
 		location.reload();
 	});
 
+	// when pillar is clicked on desktop. Calls pillars function to open the pillar in the center of the view.
 	$(document).on( 'click', '[data-action="openPillar"]', function(e){
 		if ($('.main_container div.wrapper').hasClass('reveal') === true) {
 			var pillarID = $('.pillars div.active a').data('pillar-id');
@@ -167,10 +169,13 @@ $(document).ready(function () {
 		}
 	});
 	
+	// listener for touch events. Used for swipes on mobile devices.
 	var el = document.getElementsByClassName("main_container")[0];
 	ontouch(el, function (evt, dir, phase, swipetype, distance) {
 		var deltaY;
+		// when touch has ended
 		if (phase == 'end') {
+			// only run this section if the pillar selection page is up
 			if (!$('body').hasClass('unlocked') && !$('.introBannerMiddle').length) {
 				var deltaY;
 
@@ -184,10 +189,10 @@ $(document).ready(function () {
 					deltaY = 0;
 				}
 
+				// if swiped
 				if (deltaY != 0) {
 					cyclePillars(deltaY);
-				}
-				else {
+				} else { // 0 is a click with no movement. Choose pillar
 					if ($('.main_container div.wrapper').hasClass('reveal') === true) {
 						var pillarID = $('.pillars div.active a').data('pillar-id');
 						openPillarPage(pillarID);
@@ -195,6 +200,7 @@ $(document).ready(function () {
 				}
 			}
 
+			// swipe up event for intro page
 			if ($('.introBannerMiddle > div:nth-of-type(2)').hasClass('reveal') && swipetype == 'up') {
 				$('[data-action="loadPillars"]').click();
 			}
@@ -345,6 +351,7 @@ function ontouch(el, callback) {
 		}
 
 	touchsurface.addEventListener('touchstart', function (e) {
+		// ignore some touch events if done on form page, on buttons, and on links.
 		if (
 			(e.target.matches('.form-group, .form-group *') && e.target.parentElement.className == 'form-group') ||
 			$(this).children(1).hasClass('exit') ||
@@ -375,6 +382,7 @@ function ontouch(el, callback) {
 	}, {passive: false})
 
 	touchsurface.addEventListener('touchmove', function (e) {
+		// ignore some touch events if done on form page, on buttons, and on links.
 		if (
 			(e.target.matches('.form-group, .form-group *') && e.target.parentElement.className == 'form-group') ||
 			$(this).children(1).hasClass('exit') ||
@@ -415,6 +423,7 @@ function ontouch(el, callback) {
 	}, {passive: false})
 
 	touchsurface.addEventListener('touchend', function (e) {
+		// ignore some touch events if done on form page, on buttons, and on links.
 		if (
 			(e.target.matches('.form-group, .form-group *') && e.target.parentElement.className == 'form-group') ||
 			$(this).children(1).hasClass('exit') ||
@@ -446,6 +455,7 @@ function ontouch(el, callback) {
 	}, {passive: false})
 }
 
+// test if touch device
 function is_touch_device4() {
 	var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
 	var mq = function (query) {
@@ -460,6 +470,7 @@ function is_touch_device4() {
 	return mq(query);
 }
 
+// open pillar by id passed in
 function openPillarPage (pillarID) {
 	$('.pillars, .pillarTitles').addClass('minimize');
 	$('.logo, nav > div').removeClass('reveal');
@@ -474,6 +485,12 @@ function openPillarPage (pillarID) {
 		dataType: 'json'
 	}).done(function (data) {
 		console.log('All data: ', data);
+		
+		// move white section in pillar page up a bit for mobile devices in portrait mode.
+		if (is_touch_device4() && window.innerHeight > window.innerWidth) {
+			$('#opening').css('margin', '-25rem auto 0');
+		}
+		
 		// display description
 		$('#opening .container').html(data.description);
 
