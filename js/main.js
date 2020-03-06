@@ -5,6 +5,10 @@ $(document).ready(function () {
 	if (is_touch_device4()) {
 		$('#mouse_icon').addClass('img_hidden');
 		$('#touch_icon').removeClass('img_hidden');
+		
+		if (window.innerHeight > window.innerWidth) {
+		    $('.continue').css('bottom', '32em');
+		}
 	} else {
 		$('#mouse_icon').removeClass('img_hidden');
 		$('#touch_icon').addClass('img_hidden');
