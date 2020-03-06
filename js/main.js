@@ -156,6 +156,13 @@ $(document).ready(function () {
 		location.reload();
 	});
 
+	$(document).on( 'click', '[data-action="openPillar"]', function(e){
+		if ($('.main_container div.wrapper').hasClass('reveal') === true) {
+			var pillarID = $('.pillars div.active a').data('pillar-id');
+			openPillarPage(pillarID);
+		}
+	});
+	
 	var el = document.getElementsByClassName("main_container")[0];
 	ontouch(el, function (evt, dir, phase, swipetype, distance) {
 		var deltaY;
