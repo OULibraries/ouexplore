@@ -5,12 +5,12 @@
   <title>Explore OU Libraries</title>
 
   <!-- Styles-->
-  <link rel="stylesheet" href="https://use.typekit.net/ovg3oac.css">
+  <link rel="stylesheet" href="css/ovg3oac.css">
   <link rel="stylesheet" href="css/style.css" />
 
   <!-- Scripts -->
-  <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/all.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/debounce.js"></script>
   <script type="text/javascript" src="js/mousewheel.js"></script>
   <script type="text/javascript" src="js/viewport.js"></script>

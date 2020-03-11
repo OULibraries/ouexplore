@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 
 <section id="contact">
   <div class="container">
@@ -61,11 +61,11 @@
       dataType: 'json',
       encode: true
     }).done(function(data){ //
-      console.log(data)
-      console.log(data.success);
+      //console.log(data)
+      //console.log(data.success);
 
       if(! data.success){
-        console.log('nope');
+        //console.log('nope');
         if(data.errors.name){
           $('#name-group').addClass('has-error');
           $('#name-group').append('<div class="help-block">' + data.errors.name + '</div>');
@@ -85,7 +85,7 @@
 
       }
       else {
-        console.log(data.message);
+        //console.log(data.message);
         //  $('form').append('<div class="alert alert-success success-message">' + data.message + '</div>');
         $('#contactsubmit')[0].reset();
         resultsShow();

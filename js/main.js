@@ -68,7 +68,7 @@ $(document).ready(function () {
 		}, 600);
 
 		// Load pillar content
-		setTimeout(function () {
+		//setTimeout(function () {
 			$.ajax({
 				url: 'tpl/tpl-pillars.php',
 				dataType: 'html'
@@ -87,7 +87,7 @@ $(document).ready(function () {
 					$('.pillars').css({'transform': 'translate3d(-50%, -50%, 0 ) rotate(-47deg)'});
 				}, 1500);
 			});
-		}, 1600);
+		//}, 1600);
 		//e.preventDefault();
 	});
 
@@ -126,7 +126,7 @@ $(document).ready(function () {
 		var storyTitle = $(this).parents('.highlightItem').find('h3').html();
 		var storyBody  = $(this).parents('.highlightItem').find('.body').html();
 		var storyDescription = $(this).parents('.highlightItem').find('.fullDescription').html();
-		console.log('story body: ' + storyImage);
+		//console.log('story body: ' + storyImage);
 		$('#sidebar .content').empty();
 		$('#sidebar img').attr( 'src', storyImage );
 		$('#sidebar .content').append( '<h3>'+storyTitle+'</h3>' + storyBody + storyDescription);
@@ -484,8 +484,7 @@ function openPillarPage (pillarID) {
 		},
 		dataType: 'json'
 	}).done(function (data) {
-		console.log('All data: ', data);
-		
+		//console.log('All data: ', data);
 		// move white section in pillar page up a bit for mobile devices in portrait mode.
 		if (is_touch_device4() && window.innerHeight > window.innerWidth) {
 			$('#opening').css('margin', '-25rem auto 0');
@@ -503,7 +502,7 @@ function openPillarPage (pillarID) {
 		// display highlights
 		$('#highlights').empty();
 		$.each(data.stories, function (key, story) {
-			console.log(story);
+			//console.log(story);
 			$('#highlights').append(
 				'<div class="highlightItem">' +
 				'<a href="#"><img src="' + story.image + '" alt="image for ' + story.title + '"/></a>' +
