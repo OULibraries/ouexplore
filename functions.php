@@ -13,7 +13,7 @@
         )));
         
         $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/';
-        $json = file_get_contents( $url );
+        $json = curl_get_contents( $url );
         $data = json_decode( $json, TRUE);
         $data = array_reverse( $data );
         
@@ -29,7 +29,7 @@
                 )));
                 
                 $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/'.$value['tid'];
-                $json = file_get_contents( $url );
+                $json = curl_get_contents( $url );
                 $data = json_decode( $json, TRUE);
 
                 $imgURL = 'https://exploredata.libraries.ou.edu/sites/default/files/' . $data['field_pillar_image']['und'][0]['filename'];
@@ -97,7 +97,7 @@
         )));
         
         $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/';
-        $json = file_get_contents( $url );
+        $json = curl_get_contents( $url );
         $data = json_decode( $json, TRUE);
         $data = array_reverse( $data );
         
@@ -113,7 +113,7 @@
                 )));
                 
                 $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/'.$value['tid'];
-                $json = file_get_contents( $url );
+                $json = curl_get_contents( $url );
                 $data = json_decode( $json, TRUE);
 
                 $markup = (
