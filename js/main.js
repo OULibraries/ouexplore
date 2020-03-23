@@ -488,6 +488,10 @@ function openPillarPage (pillarID) {
 		// move white section in pillar page up a bit for mobile devices in portrait mode.
 		if (is_touch_device4() && window.innerHeight > window.innerWidth) {
 			$('#opening').css('margin', '-25rem auto 0');
+			$('.back').css('font-size', '7rem');
+			$('.back').css('width', '10rem');
+			$('.back').css('height', '10rem');
+			$('.back').css('margin-top', '2rem');
 		}
 		
 		// display description
