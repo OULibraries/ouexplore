@@ -4,22 +4,55 @@
     ini_set('display_errors', 1);
 
     function getPillars( $type ){
-        stream_context_set_default(array(
-            'ssl'                => array(
-            'peer_name'          => 'generic-server',
-            'verify_peer'        => FALSE,
-            'verify_peer_name'   => FALSE,
-            'allow_self_signed'  => TRUE
-        )));
-        
-        $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/';
-        $json = curl_get_contents( $url );
-        $data = json_decode( $json, TRUE);
-        $data = array_reverse( $data );
-        
+        $data = array(
+          0 => array(
+            'tid' => 6,
+            'vid' => 3
+          ),
+          1 => array(
+            'tid' => 2,
+            'vid' => 3
+          ),
+          2 => array(
+            'tid' => 4,
+            'vid' => 3
+          ),
+          3 => array(
+            'tid' => 3,
+            'vid' => 3
+          ),
+          4 => array(
+            'tid' => 5,
+            'vid' => 3
+          ),
+          5 => array(
+            'tid' => 1,
+            'vid' => 3
+          ),
+          6 => array(
+            'tid' => 11,
+            'vid' => 2
+          ),
+          7 => array(
+            'tid' => 10,
+            'vid' => 2
+          ),
+          8 => array(
+            'tid' => 7,
+            'vid' => 2
+          ),
+          9 => array(
+            'tid' => 8,
+            'vid' => 2
+          ),
+          10 => array(
+            'tid' => 9,
+            'vid' => 2
+          )
+        );
+
         foreach( $data as $key => $value){
-            if( $value['vid'] == 2){
-                
+            if( $value['vid'] == 2) {
                 stream_context_set_default(array(
                     'ssl'                => array(
                     'peer_name'          => 'generic-server',
@@ -33,10 +66,6 @@
                 $data = json_decode( $json, TRUE);
 
                 $imgURL = 'https://exploredata.libraries.ou.edu/sites/default/files/' . $data['field_pillar_image']['und'][0]['filename'];
-                
-                //  echo '<pre>';
-                //  print_r($imgURL);
-                //  echo '<pre>';
                 
                 if( $type == 'image' ){
                     $markup = (
@@ -88,22 +117,55 @@
     }
 
     function getIssues(){
-        stream_context_set_default(array(
-            'ssl'                => array(
-            'peer_name'          => 'generic-server',
-            'verify_peer'        => FALSE,
-            'verify_peer_name'   => FALSE,
-            'allow_self_signed'  => TRUE
-        )));
-        
-        $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/';
-        $json = curl_get_contents( $url );
-        $data = json_decode( $json, TRUE);
-        $data = array_reverse( $data );
-        
+        $data = array(
+          0 => array(
+            'tid' => 6,
+            'vid' => 3
+          ),
+          1 => array(
+            'tid' => 2,
+            'vid' => 3
+          ),
+          2 => array(
+            'tid' => 4,
+            'vid' => 3
+          ),
+          3 => array(
+            'tid' => 3,
+            'vid' => 3
+          ),
+          4 => array(
+            'tid' => 5,
+            'vid' => 3
+          ),
+          5 => array(
+            'tid' => 1,
+            'vid' => 3
+          ),
+          6 => array(
+            'tid' => 11,
+            'vid' => 2
+          ),
+          7 => array(
+            'tid' => 10,
+            'vid' => 2
+          ),
+          8 => array(
+            'tid' => 7,
+            'vid' => 2
+          ),
+          9 => array(
+            'tid' => 8,
+            'vid' => 2
+          ),
+          10 => array(
+            'tid' => 9,
+            'vid' => 2
+          )
+        );
+
         foreach( $data as $key => $value){
-            if( $value['vid'] == 3){
-                
+            if( $value['vid'] == 3) {
                 stream_context_set_default(array(
                     'ssl'                => array(
                     'peer_name'          => 'generic-server',
@@ -124,8 +186,6 @@
                 );
 
                 echo $markup;
-
-                
             }
         }
     }
