@@ -181,7 +181,7 @@
                 $markup = (
                     '<div class="issueItem">'.
                         '<div class="img" style="background: url(https://exploredata.libraries.ou.edu/sites/default/files/'.$data['field_issue_image']['und'][0]['filename'].') no-repeat center center / cover;"></div>'.
-                        '<div><h2><a href="#">'.$data['name'].'</a></h2><div class="description">'.$data['description'].'</div></div>'.
+                        '<div><h2><a>'.$data['name'].'</a></h2><div class="description">'.$data['description'].'</div></div>'.
                     '</div>'
                 );
 

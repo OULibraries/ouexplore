@@ -46,7 +46,7 @@
 
 <div id="sidebar">
 <!--    <a href="#" class="close"><span style="display:none;">Close</span><i class="fa fa-times"></i></a>-->
-    <a href="#" class="close"><i class="fa fa-times"></i></a>
+    <a class="close"><i class="fa fa-times"></i></a>
     <img src="img/clock.jpeg" />
     <div class="content">
         <h3>Lorem Ipsum Dolor Sit Amet</h3>

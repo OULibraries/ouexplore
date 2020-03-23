@@ -36,7 +36,7 @@
     <li><a href="#" id="contacted">Contact</a></li>
     <!--                    <li><a href="#publications">Publications</a></li>-->
   </ul>
-  <a href="#" class="close"><span style="display:none;">Close</span><i class="fa fa-times"></i></a>
+  <a class="close"><span style="display:none;">Close</span><i class="fa fa-times"></i></a>
 </div>
 
 <!-- Main -->
