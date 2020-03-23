@@ -51,7 +51,7 @@
           )
         );
 
-        array_reverse($data);
+        $data = array_reverse($data);
 
         foreach( $data as $key => $value){
             if( $value['vid'] == 2) {
@@ -166,7 +166,7 @@
           )
         );
 
-        array_reverse($data);
+        $data = array_reverse($data);
 
         foreach( $data as $key => $value){
             if( $value['vid'] == 3) {
