@@ -509,10 +509,10 @@ function openPillarPage (pillarID) {
 			//console.log(story);
 			$('#highlights').append(
 				'<div class="highlightItem">' +
-				'<a href="#"><img src="' + story.image + '" alt="image for ' + story.title + '"/></a>' +
+				'<a><img src="' + story.image + '" alt="image for ' + story.title + '"/></a>' +
 				'<div>' +
 				'<h3>' + story.title + '</h3>' +
-				'<a href="#" data-id="' + story.id + '">Read This Story</a>' +
+				'<a data-id="' + story.id + '">Read This Story</a>' +
 				'</div>' +
 				'<div class="body" style="text-indent: -9999px; position: absolute; visibility: hidden;">' +
 				story.body +
