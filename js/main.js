@@ -179,10 +179,10 @@ $(document).ready(function () {
 			if (!$('body').hasClass('unlocked') && !$('.introBannerMiddle').length) {
 				var deltaY;
 
-				if (swipetype == 'right' || swipetype == 'down') {
+				if (dir == 'right' || dir == 'down') {
 					deltaY = 1;
 				}
-				else if (swipetype == 'left' || swipetype == 'up') {
+				else if (dir == 'left' || dir == 'up') {
 					deltaY = -1;
 				}
 				else {
