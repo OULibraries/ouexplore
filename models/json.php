@@ -27,10 +27,8 @@
     $jsonStories = curl_get_contents($urlStories);
     $dataStories = json_decode($jsonStories, TRUE);
     if (array_key_exists(0, $dataStories)) {
-      error_log('key does exist');
       $i++;
     } else {
-      error_log('key doesnt exist');
       $j++;
       break;
     }
@@ -44,13 +42,6 @@
         continue;
       }
 
-      if ($exists) {
-        error_log('yeppers');
-      } else {
-        error_log('nooooo');
-        continue;
-      }
-
       $dataSingleStory = json_decode($jsonSingleStory, TRUE);
       if (!array_key_exists('und', $dataSingleStory['field_pillars'])) {
         continue;
@@ -60,7 +51,6 @@
       $description = '';
       if ($dataSingleStory['field_pillars']['und'][0]['tid'] == $nidPillar) {
         $k++;
-        error_log(print_r($dataSingleStory, TRUE));
         # Push story to stories array
         # Uncomment if you want to start using multiple images
         //            if ($dataSingleStory['field_more_images']) {
