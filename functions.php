@@ -42,7 +42,7 @@
                         '<span></span>'.
                     '</div>'.
                     '<h2>'.
-                        '<a href="#" data-action="openPillar" data-pillar-id="'.$value['tid'].'">'.$value['name'].'</a>'.
+                        '<a href="#" data-action="openPillar" data-pillar-id="'.$value['tid'].'">'.htmlspecialchars_decode($value['name']).'</a>'.
                     '</h2>'.
                     '<div class="accents right">'.
                         '<span></span>'.
@@ -89,7 +89,7 @@
           $markup = (
             '<div class="issueItem">'.
             '<div class="img" style="background: url(https://explore.php7dev.lib.ou.edu/sites/default/files/'.$value['field_issue_image']['filename'].') no-repeat center center / cover;"></div>'.
-            '<div><h2><a>'.$value['name'].'</a></h2><div class="description">'.$value['description'].'</div></div>'.
+            '<div><h2><a>'.htmlspecialchars_decode($value['name']).'</a></h2><div class="description">'.$value['description'].'</div></div>'.
             '</div>'
           );
             echo $markup;
