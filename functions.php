@@ -12,13 +12,12 @@
             'allow_self_signed'  => TRUE
           )));
 
-        $url  = 'https://explore.php7dev.lib.ou.edu/restep/pillars?type=pillars';
+        $url  = 'https://exploredata.libraries.ou.edu/restep/pillars?type=pillars';
         $json = curl_get_contents( $url );
         $data = json_decode( $json, TRUE);
 
         foreach( $data as $key => $value){
-            //$imgURL = 'https://exploredata.libraries.ou.edu/sites/default/files/' . $value['field_pillar_image']['filename'];
-            $imgURL = 'https://explore.php7dev.lib.ou.edu/sites/default/files/' . $value['field_pillar_image']['filename'];
+            $imgURL = 'https://exploredata.libraries.ou.edu/sites/default/files/' . $value['field_pillar_image']['filename'];
 
             $markup_image .=
                 '<div>'.
@@ -75,23 +74,17 @@
             'allow_self_signed'  => TRUE
           )));
 
-        $url  = 'https://explore.php7dev.lib.ou.edu/restep/pillars?type=issue';
+        $url  = 'https://exploredata.libraries.ou.edu/restep/pillars?type=issue';
         $json = curl_get_contents( $url );
         $data = json_decode( $json, TRUE);
 
         foreach( $data as $key => $value) {
-//            $markup = (
-//                '<div class="issueItem">'.
-//                    '<div class="img" style="background: url(https://exploredata.libraries.ou.edu/sites/default/files/'.$value['field_issue_image']['filename'].') no-repeat center center / cover;"></div>'.
-//                    '<div><h2><a>'.$value['name'].'</a></h2><div class="description">'.$value['description'].'</div></div>'.
-//                '</div>'
-//            );
-          $markup = (
-            '<div class="issueItem">'.
-            '<div class="img" style="background: url(https://explore.php7dev.lib.ou.edu/sites/default/files/'.$value['field_issue_image']['filename'].') no-repeat center center / cover;"></div>'.
-            '<div><h2><a>'.htmlspecialchars_decode($value['name']).'</a></h2><div class="description">'.$value['description'].'</div></div>'.
-            '</div>'
-          );
+            $markup = (
+                '<div class="issueItem">'.
+                    '<div class="img" style="background: url(https://exploredata.libraries.ou.edu/sites/default/files/'.$value['field_issue_image']['filename'].') no-repeat center center / cover;"></div>'.
+                    '<div><h2><a>'.$value['name'].'</a></h2><div class="description">'.$value['description'].'</div></div>'.
+                '</div>'
+            );
             echo $markup;
         }
     }
