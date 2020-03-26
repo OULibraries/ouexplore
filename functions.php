@@ -3,7 +3,7 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    function getPillars( $type ){
+    function getPillars(){
         $data = array(
           0 => array(
             'tid' => 6,
@@ -52,6 +52,9 @@
         );
 
         $data = array_reverse($data);
+        $markup_image = '';
+        $markup = '';
+        $html_code = '<div class="pillars">';
 
         foreach( $data as $key => $value){
             if( $value['vid'] == 2) {
@@ -68,54 +71,52 @@
                 $data = json_decode( $json, TRUE);
 
                 $imgURL = 'https://exploredata.libraries.ou.edu/sites/default/files/' . $data['field_pillar_image']['und'][0]['filename'];
-                
-                if( $type == 'image' ){
-                    $markup = (
-                        '<div>'.
-                            '<a href="#" data-action="openPillar" data-pillar-id="'.$data['tid'].'">'.
-                                '<img src="'.$imgURL.'" alt="Pillar ' . $value['tid'] . ' "/>'.
-                            '</a>'.
-                        '</div>'
-                    );
-                    echo $markup;
-                }
-                if( $type == 'list' ){
-                    $markup = (
-                        '<div>'.
-                            '<div class="accents left">'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                            '</div>'.
-                            '<h2>'.
-                                '<a href="#" data-action="openPillar" data-pillar-id="'.$data['tid'].'">'.$data['name'].'</a>'.
-                            '</h2>'.
-                            '<div class="accents right">'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                                '<span></span>'.
-                            '</div>'.
-                        '</div>'
-                    );
-                    echo $markup;
-                }
-                
+
+                $markup_image .=
+                    '<div>'.
+                        '<a href="#" data-action="openPillar" data-pillar-id="'.$data['tid'].'">'.
+                            '<img src="'.$imgURL.'" alt="Pillar ' . $value['tid'] . ' "/>'.
+                        '</a>'.
+                    '</div>';
+
+                $markup .=
+                    '<div>'.
+                        '<div class="accents left">'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                        '</div>'.
+                        '<h2>'.
+                            '<a href="#" data-action="openPillar" data-pillar-id="'.$data['tid'].'">'.$data['name'].'</a>'.
+                        '</h2>'.
+                        '<div class="accents right">'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                            '<span></span>'.
+                        '</div>'.
+                    '</div>';
             }
         }
+
+        $html_code .= $markup_image;
+        $html_code .= '</div><div class="pillarTitles"><div>';
+        $html_code .= $markup;
+        $html_code .= '</div></div><div class="markers"><div></div><div></div><div></div><div></div><div></div></div></div>';
+        echo $html_code;
     }
 
     function getIssues(){

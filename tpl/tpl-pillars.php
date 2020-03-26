@@ -4,25 +4,8 @@
 <div class="wrapper">
     <div class="bg"></div>
         <h1 style="display: none">A Page of Pillars</h1>
-    <div class="pillars">
-        <?php getPillars( 'image' ); ?>
-    </div>
-
-    <div class="pillarTitles">
-        <div>
-            <?php getPillars( 'list' ); ?>
-        </div>
-    </div>
-    
-    <div class="markers">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    
-</div>
+        <?php getPillars(); ?>
+<!--  php above contains rest of html for wrapper dev-->
 
 <div class="leftBorder"></div>
 <div class="rightBorder"></div>
