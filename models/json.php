@@ -17,7 +17,7 @@
   $jsonPillar = curl_get_contents($urlPillar);
   $dataPillar = json_decode($jsonPillar, TRUE);
   $storiesArr = [];
-  $urlStories = 'https://explore.php7dev.lib.ou.edu/restep/stories?tid=' . $nidPillar;
+  $urlStories = 'https://exploredata.libraries.ou.edu/restep/stories?tid=' . $nidPillar;
   $jsonStories = curl_get_contents($urlStories);
   $dataStories = json_decode($jsonStories, TRUE);
 
