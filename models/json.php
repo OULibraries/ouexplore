@@ -17,66 +17,23 @@
   $jsonPillar = curl_get_contents($urlPillar);
   $dataPillar = json_decode($jsonPillar, TRUE);
   $storiesArr = [];
-  $i = 0;
-  $j = 1;
-  $k = 0;
-  $urlStories = 'https://exploredata.libraries.ou.edu/restep/node?page=' . $i . '&pagesize=200';
+  $urlStories = 'https://exploredata.libraries.ou.edu/restep/stories?tid=' . $nidPillar;
+  $jsonStories = curl_get_contents($urlStories);
+  $dataStories = json_decode($jsonStories, TRUE);
 
-  while ($j < 2 & $k < 3) {
-    # Get Associated Stories
-    $jsonStories = curl_get_contents($urlStories);
-    $dataStories = json_decode($jsonStories, TRUE);
-    if (array_key_exists(0, $dataStories)) {
-      $i++;
-    } else {
-      $j++;
-      break;
-    }
-
-    foreach ($dataStories as $story) {
+  foreach ($dataStories as $story) {
       $urlSingleStory = $story['uri'];
-      $jsonSingleStory = curl_get_contents($urlSingleStory);
-      $exists = strpos($jsonSingleStory, 'tid":"' . $nidPillar);
-
-      if (!$exists) {
-        continue;
-      }
-
-      $dataSingleStory = json_decode($jsonSingleStory, TRUE);
-      if (!array_key_exists('und', $dataSingleStory['field_pillars'])) {
-        continue;
-      }
-
       $multiImageArray = [];
-      $description = '';
-      if ($dataSingleStory['field_pillars']['und'][0]['tid'] == $nidPillar) {
-        $k++;
-        # Push story to stories array
-        # Uncomment if you want to start using multiple images
-        //            if ($dataSingleStory['field_more_images']) {
-        //                foreach ($dataSingleStory['field_more_images']['und'] as $multiImage) {
-        //                    array_push($multiImageArray, 'https://exploredata.libraries.ou.edu/sites/default/files/' . $multiImage['filename']);
-        //                }
-        //            }
-        if (array_key_exists('und', $dataSingleStory['field_description'])) {
-          $description = $dataSingleStory['field_description']['und'][0]['value'];
-        }
+      $description = !empty($story['description']) ? $story['description'] : '';
 
-        array_push($storiesArr, [
-            'id' => $dataSingleStory['vid'],
-            'title' => $dataSingleStory['title'],
-            'body' => $dataSingleStory['body']['und'][0]['value'],
-            'description' => $description,
-            'image' => 'https://exploredata.libraries.ou.edu/sites/default/files/' . $dataSingleStory['field_cover_image']['und'][0]['filename'],
-            'multiImage' => $multiImageArray,
-          ]);
-      }
-
-      if ($k == 3) {
-        break;
-      }
-    }
-    $urlStories = 'https://exploredata.libraries.ou.edu/restep/node?page=' . $i;
+      array_push($storiesArr, [
+        'id' => $story['vid'],
+        'title' => $story['title'],
+        'body' => $story['body'],
+        'description' => $description,
+        'image' => 'https://exploredata.libraries.ou.edu/sites/default/files/' . $story['image']['filename'],
+        'multiImage' => $multiImageArray
+      ]);
   }
   # Create array of Pillar information.
   $arr = [
