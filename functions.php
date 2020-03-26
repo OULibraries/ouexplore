@@ -1,115 +1,62 @@
 <?php
-
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-
-    function getPillars(){
-        $data = array(
-          0 => array(
-            'tid' => 6,
-            'vid' => 3
-          ),
-          1 => array(
-            'tid' => 2,
-            'vid' => 3
-          ),
-          2 => array(
-            'tid' => 4,
-            'vid' => 3
-          ),
-          3 => array(
-            'tid' => 3,
-            'vid' => 3
-          ),
-          4 => array(
-            'tid' => 5,
-            'vid' => 3
-          ),
-          5 => array(
-            'tid' => 1,
-            'vid' => 3
-          ),
-          6 => array(
-            'tid' => 11,
-            'vid' => 2
-          ),
-          7 => array(
-            'tid' => 10,
-            'vid' => 2
-          ),
-          8 => array(
-            'tid' => 7,
-            'vid' => 2
-          ),
-          9 => array(
-            'tid' => 8,
-            'vid' => 2
-          ),
-          10 => array(
-            'tid' => 9,
-            'vid' => 2
-          )
-        );
-
-        $data = array_reverse($data);
+    function getPillars() {
         $markup_image = '';
         $markup = '';
         $html_code = '<div class="pillars">';
 
+        stream_context_set_default(array(
+          'ssl'                => array(
+            'peer_name'          => 'generic-server',
+            'verify_peer'        => FALSE,
+            'verify_peer_name'   => FALSE,
+            'allow_self_signed'  => TRUE
+          )));
+
+        $url  = 'https://explore.php7dev.lib.ou.edu/restep/pillars?type=pillars';
+        $json = curl_get_contents( $url );
+        $data = json_decode( $json, TRUE);
+
         foreach( $data as $key => $value){
-            if( $value['vid'] == 2) {
-                stream_context_set_default(array(
-                    'ssl'                => array(
-                    'peer_name'          => 'generic-server',
-                    'verify_peer'        => FALSE,
-                    'verify_peer_name'   => FALSE,
-                    'allow_self_signed'  => TRUE
-                )));
-                
-                $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/'.$value['tid'];
-                $json = curl_get_contents( $url );
-                $data = json_decode( $json, TRUE);
+            //$imgURL = 'https://exploredata.libraries.ou.edu/sites/default/files/' . $value['field_pillar_image']['filename'];
+            $imgURL = 'https://explore.php7dev.lib.ou.edu/sites/default/files/' . $value['field_pillar_image']['filename'];
 
-                $imgURL = 'https://exploredata.libraries.ou.edu/sites/default/files/' . $data['field_pillar_image']['und'][0]['filename'];
+            $markup_image .=
+                '<div>'.
+                    '<a href="#" data-action="openPillar" data-pillar-id="'.$value['tid'].'">'.
+                        '<img src="'.$imgURL.'" alt="Pillar ' . $value['tid'] . ' "/>'.
+                    '</a>'.
+                '</div>';
 
-                $markup_image .=
-                    '<div>'.
-                        '<a href="#" data-action="openPillar" data-pillar-id="'.$data['tid'].'">'.
-                            '<img src="'.$imgURL.'" alt="Pillar ' . $value['tid'] . ' "/>'.
-                        '</a>'.
-                    '</div>';
-
-                $markup .=
-                    '<div>'.
-                        '<div class="accents left">'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                        '</div>'.
-                        '<h2>'.
-                            '<a href="#" data-action="openPillar" data-pillar-id="'.$data['tid'].'">'.$data['name'].'</a>'.
-                        '</h2>'.
-                        '<div class="accents right">'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                            '<span></span>'.
-                        '</div>'.
-                    '</div>';
-            }
+            $markup .=
+                '<div>'.
+                    '<div class="accents left">'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                    '</div>'.
+                    '<h2>'.
+                        '<a href="#" data-action="openPillar" data-pillar-id="'.$value['tid'].'">'.$value['name'].'</a>'.
+                    '</h2>'.
+                    '<div class="accents right">'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                        '<span></span>'.
+                    '</div>'.
+                '</div>';
         }
 
         $html_code .= $markup_image;
@@ -120,78 +67,32 @@
     }
 
     function getIssues(){
-        $data = array(
-          0 => array(
-            'tid' => 6,
-            'vid' => 3
-          ),
-          1 => array(
-            'tid' => 2,
-            'vid' => 3
-          ),
-          2 => array(
-            'tid' => 4,
-            'vid' => 3
-          ),
-          3 => array(
-            'tid' => 3,
-            'vid' => 3
-          ),
-          4 => array(
-            'tid' => 5,
-            'vid' => 3
-          ),
-          5 => array(
-            'tid' => 1,
-            'vid' => 3
-          ),
-          6 => array(
-            'tid' => 11,
-            'vid' => 2
-          ),
-          7 => array(
-            'tid' => 10,
-            'vid' => 2
-          ),
-          8 => array(
-            'tid' => 7,
-            'vid' => 2
-          ),
-          9 => array(
-            'tid' => 8,
-            'vid' => 2
-          ),
-          10 => array(
-            'tid' => 9,
-            'vid' => 2
-          )
-        );
+        stream_context_set_default(array(
+          'ssl'                => array(
+            'peer_name'          => 'generic-server',
+            'verify_peer'        => FALSE,
+            'verify_peer_name'   => FALSE,
+            'allow_self_signed'  => TRUE
+          )));
 
-        $data = array_reverse($data);
+        $url  = 'https://explore.php7dev.lib.ou.edu/restep/pillars?type=issue';
+        $json = curl_get_contents( $url );
+        $data = json_decode( $json, TRUE);
 
-        foreach( $data as $key => $value){
-            if( $value['vid'] == 3) {
-                stream_context_set_default(array(
-                    'ssl'                => array(
-                    'peer_name'          => 'generic-server',
-                    'verify_peer'        => FALSE,
-                    'verify_peer_name'   => FALSE,
-                    'allow_self_signed'  => TRUE
-                )));
-                
-                $url  = 'https://exploredata.libraries.ou.edu/restep/taxonomy_term/'.$value['tid'];
-                $json = curl_get_contents( $url );
-                $data = json_decode( $json, TRUE);
-
-                $markup = (
-                    '<div class="issueItem">'.
-                        '<div class="img" style="background: url(https://exploredata.libraries.ou.edu/sites/default/files/'.$data['field_issue_image']['und'][0]['filename'].') no-repeat center center / cover;"></div>'.
-                        '<div><h2><a>'.$data['name'].'</a></h2><div class="description">'.$data['description'].'</div></div>'.
-                    '</div>'
-                );
-
-                echo $markup;
-            }
+        foreach( $data as $key => $value) {
+//            $markup = (
+//                '<div class="issueItem">'.
+//                    '<div class="img" style="background: url(https://exploredata.libraries.ou.edu/sites/default/files/'.$value['field_issue_image']['filename'].') no-repeat center center / cover;"></div>'.
+//                    '<div><h2><a>'.$value['name'].'</a></h2><div class="description">'.$value['description'].'</div></div>'.
+//                '</div>'
+//            );
+          $markup = (
+            '<div class="issueItem">'.
+            '<div class="img" style="background: url(https://explore.php7dev.lib.ou.edu/sites/default/files/'.$value['field_issue_image']['filename'].') no-repeat center center / cover;"></div>'.
+            '<div><h2><a>'.$value['name'].'</a></h2><div class="description">'.$value['description'].'</div></div>'.
+            '</div>'
+          );
+            echo $markup;
         }
     }
 
