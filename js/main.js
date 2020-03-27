@@ -48,14 +48,14 @@ $(document).ready(function () {
 		$('.continue').addClass('reveal');
 		$('.continue').css({
 			'animation':'pulse 4s infinite'
-		})
+		});
 	}, 8000 );
 
 	setTimeout( function(){
 		$('.continue').addClass('reveal');
 		$('.continue').css({
 			'animation':'pulse 4s infinite'
-		})
+		});
 	}, 8000 );
 
 	//  Load Pillars
