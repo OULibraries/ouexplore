@@ -6,15 +6,21 @@ $(document).ready(function () {
 		$("#mouse_icon").addClass("img_hidden");
 		$("#touch_icon").removeClass("img_hidden");
 
-		$(".continue").css("font-size", "3rem");
-		$("#touch_icon").css("width", "5rem");
-		$("#touch_icon").css("margin", "2rem auto 0rem");
-
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
 		if (window.matchMedia("(orientation: portrait)").matches) { //portrait
 			$(".continue").css("bottom", "29rem");
+			$(".continue").css("font-size", "3rem");
+			$("#touch_icon").css("width", "5rem");
+			$("#touch_icon").css("margin", "2rem auto 0rem");
 		} else { //landscape
 			if (isMobile.tablet) { //tablet
+				$(".continue").css("bottom", "15em");
+				$(".continue").css("font-size", "3rem");
+				$("#touch_icon").css("width", "5rem");
+				$("#touch_icon").css("margin", "2rem auto 0rem");
+			}
+
+			if (isMobile.phone) {
 				$(".continue").css("bottom", "15em");
 			}
 		}
