@@ -8,6 +8,8 @@ $(document).ready(function () {
 		
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
 		if (window.innerHeight > window.innerWidth) {
+				alert(window.outerWidth);
+				setTimeout(alert(window.innerWidth), 5000);
 				if (window.outerWidth < 500) {
 					$('.continue').css('bottom', '14em');
 					$('.continue').css('font-size', '3rem !important');
