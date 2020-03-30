@@ -6,6 +6,8 @@ $(document).ready(function () {
 		$('#mouse_icon').addClass('img_hidden');
 		$('#touch_icon').removeClass('img_hidden');
 
+		alert(screen.width."x".screen.height);
+
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
 		if (screen.height > screen.width) { //portrait
 				if (screen.width < 1000) { //phones
