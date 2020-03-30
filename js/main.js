@@ -7,8 +7,10 @@ $(document).ready(function () {
 		$('#touch_icon').removeClass('img_hidden');
 		
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
-		if (window.innerHeight > window.innerWidth) {
-		    $('.continue').css('bottom', '32em');
+		if (window.innerHeight > window.innerWidth && window.innerWidth < 500) {
+		    $('.continue').css('bottom', '14em');
+		    $('.continue').css('font-size', '3rem !important');
+				$('.continue img').css('width': '5rem');
 		}
 	} else {
 		$('#mouse_icon').removeClass('img_hidden');
@@ -458,7 +460,7 @@ function openPillarPage (pillarID) {
 	}).done(function (data) {
 		//console.log('All data: ', data);
 		// move white section in pillar page up a bit for mobile devices in portrait mode.
-		if (is_touch_device4() && window.innerHeight > window.innerWidth) {
+		if (is_touch_device4() && window.innerHeight > window.innerWidth && window.innerWidth < 500) {
 			$('#opening').css('margin', '-25rem auto 0');
 			$('.back').css('font-size', '7rem');
 			$('.back').css('width', '10rem');
