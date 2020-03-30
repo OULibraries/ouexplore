@@ -21,7 +21,7 @@ $(document).ready(function () {
 			}
 
 			if (isMobile.phone) {
-				$(".continue").css("bottom", "15em");
+				$(".continue").css("bottom", "10em");
 			}
 		}
 	} else { // not touch device
