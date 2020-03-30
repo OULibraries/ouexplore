@@ -2,22 +2,28 @@ var step = 1;
 
 $(document).ready(function () {
 	// hide and show the mouse/touch icons based on touch device or not.
-	if (WURFL.is_mobile === true) {
+	setTimeout(function () {
+		alert(isMobile.any);
+	}, 5000);
+
+	alert(isMobile.any);
+
+	if (isMobile.any === true) {
 		$('#mouse_icon').addClass('img_hidden');
 		$('#touch_icon').removeClass('img_hidden');
 
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
 		if (window.matchMedia("(orientation: portrait)").matches) { //portrait
-				if (WURFL.form_factor === "Smartphone") {
+				if (isMobile.phone) {
 					$('.continue').css('bottom', '14rem');
 					$('.continue').css('font-size', '3rem');
 					$('#touch_icon').css('width', '5rem');
 					$('#touch_icon').css('margin', '2rem auto 0rem');
-				} else if (WURFL.form_factor === "Tablet") { // tablet
+				} else if (isMobile.tablet) { // tablet
 					$('.continue').css('bottom', '20em');
 				}
 		} else { //landscape
-			if (WURFL.form_factor === "Tablet") { //tablet
+			if (isMobile.tablet) { //tablet
 				$('.continue').css('bottom', '12em');
 			}
 		}
@@ -454,7 +460,7 @@ function openPillarPage (pillarID) {
 	}).done(function (data) {
 		//console.log('All data: ', data);
 		// move white section in pillar page up a bit for mobile devices in portrait mode.
-		if (WURFL.is_mobile === true && window.matchMedia("(orientation: portrait)").matches && WURFL.form_factor === "Smartphone") {
+		if (isMobile.phone === true && window.matchMedia("(orientation: portrait)").matches) {
 			$('#opening').css('margin', '-25rem auto 0');
 			$('.back').css('font-size', '7rem');
 			$('.back').css('width', '10rem');
