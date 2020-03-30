@@ -2,21 +2,26 @@ var step = 1;
 
 $(document).ready(function () {
 	// hide and show the mouse/touch icons based on touch device or not.
-	if (is_touch_device4()) {
+	if (is_touch_device4()) { //is touch device
 		$('#mouse_icon').addClass('img_hidden');
 		$('#touch_icon').removeClass('img_hidden');
 		
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
-		if (window.innerHeight > window.innerWidth) {
-				if (window.outerWidth < 500) {
+		if (window.innerHeight > window.innerWidth) { //portrait
+				if (window.outerWidth < 500) { //phones
 					$('.continue').css('bottom', '14em');
 					$('.continue').css('font-size', '3rem !important');
-					$('.continue img').css('width', '5rem');
-				} else {
+					$('#touch_icon').css('width', '5rem');
+					$('#touch_icon').css('margin', '2rem auto 0rem');
+				} else { // tablet
 					$('.continue').css('bottom', '20em');
 				}
+		} else { //landscape
+			if (window.outerWidth > 1024) { //tablet
+				$('.continue').css('bottom', '19em');
+			}
 		}
-	} else {
+	} else { // not touch device
 		$('#mouse_icon').removeClass('img_hidden');
 		$('#touch_icon').addClass('img_hidden');
 	}
