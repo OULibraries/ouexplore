@@ -6,10 +6,10 @@ $(document).ready(function () {
 		$('#mouse_icon').addClass('img_hidden');
 		$('#touch_icon').removeClass('img_hidden');
 
-		alert($(window).width());
+		alert(screen.width);
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
-		if ($(window).height() > $(window).width()) { //portrait
-				if ($(window).width() < 500) { //phones
+		if (screen.height > screen.width) { //portrait
+				if (screen.width < 500) { //phones
 					$('.continue').css('bottom', '14em');
 					$('.continue').css('font-size', '3rem !important');
 					$('#touch_icon').css('width', '5rem');
@@ -18,7 +18,7 @@ $(document).ready(function () {
 					$('.continue').css('bottom', '20em');
 				}
 		} else { //landscape
-			if ($(window).width() > 1024) { //tablet
+			if (screen.width > 825) { //tablet
 				$('.continue').css('bottom', '19em');
 			}
 		}
@@ -470,7 +470,7 @@ function openPillarPage (pillarID) {
 	}).done(function (data) {
 		//console.log('All data: ', data);
 		// move white section in pillar page up a bit for mobile devices in portrait mode.
-		if (is_touch_device4() && $(window).height() > $(window).width() && $(window).width() < 500) {
+		if (is_touch_device4() && screen.height > screen.width && screen.width < 825) {
 			$('#opening').css('margin', '-25rem auto 0');
 			$('.back').css('font-size', '7rem');
 			$('.back').css('width', '10rem');
