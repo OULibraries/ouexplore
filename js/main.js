@@ -9,8 +9,8 @@ $(document).ready(function () {
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
 		if (screen.height > screen.width) { //portrait
 				if (screen.width < 1000) { //phones
-					$('.continue').css('bottom', '14em');
-					$('.continue').css('font-size', '3rem !important');
+					$('.continue').css('bottom', '14rem');
+					$('.continue').css('font-size', '3rem');
 					$('#touch_icon').css('width', '5rem');
 					$('#touch_icon').css('margin', '2rem auto 0rem');
 				} else { // tablet

@@ -179,7 +179,7 @@ nav {
     position: absolute;
     text-transform: uppercase;
     bottom: 4rem;
-    font-size: 1.1rem !important;
+    font-size: 1.1rem;
     left: 0;
     width: 100%;
     letter-spacing: 0.1em;
