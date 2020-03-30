@@ -7,10 +7,14 @@ $(document).ready(function () {
 		$('#touch_icon').removeClass('img_hidden');
 		
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
-		if (window.innerHeight > window.innerWidth && window.outerWidth < 500) {
-		    $('.continue').css('bottom', '14em');
-		    $('.continue').css('font-size', '3rem !important');
-				$('.continue img').css('width', '5rem');
+		if (window.innerHeight > window.innerWidth) {
+				if (window.outerWidth < 500) {
+					$('.continue').css('bottom', '14em');
+					$('.continue').css('font-size', '3rem !important');
+					$('.continue img').css('width', '5rem');
+				} else {
+					$('.continue').css('bottom', '25em');
+				}
 		}
 	} else {
 		$('#mouse_icon').removeClass('img_hidden');
