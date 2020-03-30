@@ -6,10 +6,9 @@ $(document).ready(function () {
 		$('#mouse_icon').addClass('img_hidden');
 		$('#touch_icon').removeClass('img_hidden');
 
-		alert(screen.width);
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
 		if (screen.height > screen.width) { //portrait
-				if (screen.width < 500) { //phones
+				if (screen.width < 1000) { //phones
 					$('.continue').css('bottom', '14em');
 					$('.continue').css('font-size', '3rem !important');
 					$('#touch_icon').css('width', '5rem');
@@ -18,8 +17,8 @@ $(document).ready(function () {
 					$('.continue').css('bottom', '20em');
 				}
 		} else { //landscape
-			if (screen.width > 825) { //tablet
-				$('.continue').css('bottom', '19em');
+			if (screen.width > 1000) { //tablet
+				$('.continue').css('bottom', '12em');
 			}
 		}
 	} else { // not touch device
@@ -470,7 +469,7 @@ function openPillarPage (pillarID) {
 	}).done(function (data) {
 		//console.log('All data: ', data);
 		// move white section in pillar page up a bit for mobile devices in portrait mode.
-		if (is_touch_device4() && screen.height > screen.width && screen.width < 825) {
+		if (is_touch_device4() && screen.height > screen.width && screen.width < 1000) {
 			$('#opening').css('margin', '-25rem auto 0');
 			$('.back').css('font-size', '7rem');
 			$('.back').css('width', '10rem');
