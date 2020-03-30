@@ -10,7 +10,7 @@ $(document).ready(function () {
 		if (window.innerHeight > window.innerWidth && window.innerWidth < 500) {
 		    $('.continue').css('bottom', '14em');
 		    $('.continue').css('font-size', '3rem !important');
-				$('.continue img').css('width': '5rem');
+				$('.continue img').css('width', '5rem');
 		}
 	} else {
 		$('#mouse_icon').removeClass('img_hidden');
