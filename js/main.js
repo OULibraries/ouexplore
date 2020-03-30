@@ -5,10 +5,11 @@ $(document).ready(function () {
 	if (is_touch_device4()) { //is touch device
 		$('#mouse_icon').addClass('img_hidden');
 		$('#touch_icon').removeClass('img_hidden');
-		
+
+		alert($(window).width());
 		// move "start scrolling" indicator up a bit for mobile devices in portrait mode.
-		if (window.innerHeight > window.innerWidth) { //portrait
-				if (window.outerWidth < 500) { //phones
+		if ($(window).height() > $(window).width()) { //portrait
+				if ($(window).width() < 500) { //phones
 					$('.continue').css('bottom', '14em');
 					$('.continue').css('font-size', '3rem !important');
 					$('#touch_icon').css('width', '5rem');
@@ -17,7 +18,7 @@ $(document).ready(function () {
 					$('.continue').css('bottom', '20em');
 				}
 		} else { //landscape
-			if (window.outerWidth > 1024) { //tablet
+			if ($(window).width() > 1024) { //tablet
 				$('.continue').css('bottom', '19em');
 			}
 		}
@@ -469,7 +470,7 @@ function openPillarPage (pillarID) {
 	}).done(function (data) {
 		//console.log('All data: ', data);
 		// move white section in pillar page up a bit for mobile devices in portrait mode.
-		if (is_touch_device4() && window.innerHeight > window.innerWidth && window.outerWidth < 500) {
+		if (is_touch_device4() && $(window).height() > $(window).width() && $(window).width() < 500) {
 			$('#opening').css('margin', '-25rem auto 0');
 			$('.back').css('font-size', '7rem');
 			$('.back').css('width', '10rem');
