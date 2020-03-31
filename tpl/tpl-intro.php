@@ -1,6 +1,4 @@
-
 <section id="intro">
-
   <div class="introMessage">
     <div class="introBannerTop">
       <img class="bannerTail" src="img/banner-tail.svg" alt="The second part of the banner"/>
@@ -33,13 +31,11 @@
       <img class="bannerHead" src="img/banner-head.svg" alt="scroll down for more information"/>
     </div>
   </div>
-
   <a class="continue" data-action="loadPillars">
 
     Start Scrolling
     <img id="mouse_icon" src="img/mouse.svg" alt="mouse icon indicating to scroll down"/>
     <img id="touch_icon" class="img_hidden" src="img/touch.svg" alt="touch icon indicating to scroll down"/>
   </a>
-  
-  
+  <div class="hidden cssload-spin-box"></div>
 </section>
