@@ -4,6 +4,7 @@
 <div class="wrapper">
     <div class="bg"></div>
         <h1 style="display: none">A Page of Pillars</h1>
+        <div class="pillar_top hidden cssload-spin-box"></div>
         <?php getPillars(); ?>
 <!--  php above contains rest of html for wrapper dev-->
 

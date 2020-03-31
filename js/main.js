@@ -2,7 +2,7 @@ var step = 1;
 
 $(document).ready(function () {
 	// hide and show the mouse/touch icons based on touch device or not.
-	if (isMobile.any === true) {
+	if (isMobile.any === true || is_touch_device()) {
 		$("#mouse_icon").addClass("img_hidden");
 		$("#touch_icon").removeClass("img_hidden");
 
@@ -13,8 +13,10 @@ $(document).ready(function () {
 			$("#touch_icon").css("width", "5rem");
 			$("#touch_icon").css("margin", "2rem auto 0rem");
 		} else { //landscape
-			if (isMobile.tablet) { //tablet
-				$(".continue").css("bottom", "15em");
+			var is_iPad1 = navigator.userAgent.match(/iPhone|iPad|iPod/i);
+			var is_iPad2 = navigator.userAgent.match(/10_15/i);
+			if (isMobile.tablet || is_iPad1 || is_iPad2) { //tablet
+				$(".continue").css("bottom", "4em");
 				$(".continue").css("font-size", "3rem");
 				$("#touch_icon").css("width", "5rem");
 				$("#touch_icon").css("margin", "2rem auto 0rem");
@@ -72,9 +74,10 @@ $(document).ready(function () {
 	$(".continue").on("click", function (e) {
 		// Remove intro content
 		$(".introBannerMiddle > div:nth-of-type(2), #intro").addClass("exit");
-		$(".continue").removeClass("reveal");
+		$(".continue").removeClass("reveal").addClass("hidden");
 		setTimeout(function () {
 			$(".introBannerBottom").addClass("exit");
+			$('.cssload-spin-box').removeClass('hidden');
 		}, 600);
 
 		// Load pillar content
@@ -83,6 +86,7 @@ $(document).ready(function () {
 				url: "tpl/tpl-pillars.php",
 				dataType: "html"
 			}).done(function (data) {
+				$('.cssload-spin-box').addClass('hidden');
 				$("[role=\"main\"]").html(data);
 				setTimeout(function () {
 					var imgURL = $(".pillars > div:nth-of-type(" + step + ")").find("img").attr("src");
@@ -111,21 +115,27 @@ $(document).ready(function () {
 		$('.menu').removeClass('reveal');
 	});
 
-	$( document ).on( 'click', '.highlightItem a', function(){
+	$(document).on( 'click', '.highlightItem a', function() {
 		var storyImage = $(this).parents('.highlightItem').find('img').attr('src');
 		var storyTitle = $(this).parents('.highlightItem').find('h3').html();
 		var storyBody  = $(this).parents('.highlightItem').find('.body').html();
 		var storyDescription = $(this).parents('.highlightItem').find('.fullDescription').html();
-		//console.log('story body: ' + storyImage);
+
 		$('#sidebar .content').empty();
 		$('#sidebar img').attr( 'src', storyImage );
 		$('#sidebar .content').append( '<h3>'+storyTitle+'</h3>' + storyBody + storyDescription);
 
 		$('.overlay, #sidebar').addClass('reveal');
-		// e.preventDefault();
+
+		// move white section in pillar page up a bit for mobile devices in portrait mode. Also, larger back button.
+		if (isMobile.phone === true && window.matchMedia("(orientation: portrait)").matches) {
+			$('.close').css('font-size', '7rem');
+			$('.close').css('width', '10rem');
+			$('.close').css('height', '10rem');
+		}
 	});
 
-	$( document ).on( 'click', '#sidebar .close, .overlay', function(){
+	$(document).on('click', '#sidebar .close, .overlay', function() {
 		$('.overlay, #sidebar').removeClass('reveal');
 		// e.preventDefault();
 	});
@@ -144,7 +154,7 @@ $(document).ready(function () {
 	});
 
 	// when pillar is clicked on desktop. Calls pillars function to open the pillar in the center of the view.
-	$(document).on( 'click', '[data-action="openPillar"]', function(e){
+	$(document).on('click', '[data-action="openPillar"]', function() {
 		if ($('.main_container div.wrapper').hasClass('reveal') === true) {
 			var pillarID = $('.pillars div.active a').data('pillar-id');
 			openPillarPage(pillarID);
@@ -171,6 +181,10 @@ $(document).ready(function () {
 					deltaY = 0;
 				}
 
+				if (Math.abs(distance) < 15) {
+					deltaY = 0;
+				}
+
 				// if swiped
 				if (deltaY != 0) {
 					cyclePillars(deltaY);
@@ -183,7 +197,7 @@ $(document).ready(function () {
 			}
 
 			// swipe up event for intro page
-			if ($('.introBannerMiddle > div:nth-of-type(2)').hasClass('reveal') && swipetype == 'up') {
+			if ($('.introBannerMiddle > div:nth-of-type(2)').hasClass('reveal') && dir == 'up') {
 				$('[data-action="loadPillars"]').click();
 			}
 		}
@@ -255,8 +269,6 @@ $(document).ready(function () {
 
 	//  Functions
 	function cyclePillars(deltaY) {
-		var currentStep = step;
-
 		if (deltaY <= 0) {
 			if (step == 5) {
 				step = 1;
@@ -279,38 +291,30 @@ $(document).ready(function () {
 
 		var imgURL = $('.pillars > div:nth-of-type(' + step + ')').find('img').attr('src');
 
-		// console.log( step );
-		// console.log( imgURL );
-
 		if (step == 1) {
 			$('.pillars').css({'transform': 'translate3d(-50%, -50%, 0 ) rotate(-47deg)'});
 			$('.pillarTitles > div').css({'transform': 'translate3d( 0, 0, 0 )'});
 			$('.wrapper .bg').css({'background': 'url("' + imgURL + '") no-repeat center center / cover'});
-			//step++;
 		}
 		else if (step == 2) {
 			$('.pillars').css({'transform': 'translate3d(-50%, -50%, 0 ) rotate(-87deg)'});
 			$('.pillarTitles > div').css({'transform': 'translate3d( -100vw, 0, 0 )'});
 			$('.wrapper .bg').css({'background': 'url("' + imgURL + '") no-repeat center center / cover'});
-			//step++;
 		}
 		else if (step == 3) {
 			$('.pillars').css({'transform': 'translate3d(-50%, -50%, 0 ) rotate(-127deg)'});
 			$('.pillarTitles > div').css({'transform': 'translate3d( -200vw, 0, 0 )'});
 			$('.wrapper .bg').css({'background': 'url("' + imgURL + '") no-repeat center center / cover'});
-			//step++;
 		}
 		else if (step == 4) {
 			$('.pillars').css({'transform': 'translate3d(-50%, -50%, 0 ) rotate(-167deg)'});
 			$('.pillarTitles > div').css({'transform': 'translate3d( -300vw, 0, 0 )'});
 			$('.wrapper .bg').css({'background': 'url("' + imgURL + '") no-repeat center center / cover'});
-			//step++;
 		}
 		else if (step == 5) {
 			$('.pillars').css({'transform': 'translate3d(-50%, -50%, 0 ) rotate(-207deg)'});
 			$('.pillarTitles > div').css({'transform': 'translate3d( -400vw, 0, 0 )'});
 			$('.wrapper .bg').css({'background': 'url("' + imgURL + '") no-repeat center center / cover'});
-			//step = 0;
 		}
 	}
 });
@@ -324,13 +328,11 @@ function ontouch(el, callback) {
 		distX,
 		distY,
 		threshold = 150, //required min distance traveled to be considered swipe
-		restraint = 100, // maximum distance allowed at the same time in
-										 // perpendicular direction
+		restraint = 100, // maximum distance allowed at the same time in perpendicular direction
 		allowedTime = 500, // maximum time allowed to travel that distance
 		elapsedTime,
 		startTime,
-		handletouch = callback || function (evt, dir, phase, swipetype, distance) {
-		}
+		handletouch = callback || function (evt, dir, phase, swipetype, distance) {}
 
 	touchsurface.addEventListener('touchstart', function (e) {
 		// ignore some touch events if done on form page, on buttons, and on links.
@@ -354,12 +356,8 @@ function ontouch(el, callback) {
 		dist = 0
 		startX = touchobj.pageX
 		startY = touchobj.pageY
-		startTime = new Date().getTime() // record time when finger first makes
-																		 // contact with surface
-		handletouch(e, 'none', 'start', swipeType, 0) // fire callback function
-																									// with params dir="none",
-																									// phase="start",
-																									// swipetype="none" etc
+		startTime = new Date().getTime() // record time when finger first makes contact with surface
+		handletouch(e, 'none', 'start', swipeType, 0) // fire callback function with params dir="none", phase="start", swipetype="none" etc
 		e.preventDefault();
 	}, {passive: false})
 
@@ -380,26 +378,16 @@ function ontouch(el, callback) {
 			return false;
 		}
 		var touchobj = e.changedTouches[0]
-		distX = touchobj.pageX - startX // get horizontal dist traveled by finger
-																		// while in contact with surface
-		distY = touchobj.pageY - startY // get vertical dist traveled by finger
-																		// while in contact with surface
+		distX = touchobj.pageX - startX // get horizontal dist traveled by finger while in contact with surface
+		distY = touchobj.pageY - startY // get vertical dist traveled by finger while in contact with surface
 		if (Math.abs(distX) > Math.abs(distY)) { // if distance traveled horizontally is greater than vertically, consider
 			// this a horizontal movement
 			dir = (distX < 0) ? 'left' : 'right'
-			handletouch(e, dir, 'move', swipeType, distX) // fire callback function
-																										// with params
-																										// dir="left|right",
-																										// phase="move",
-																										// swipetype="none" etc
+			handletouch(e, dir, 'move', swipeType, distX) // fire callback function with params dir="left|right", phase="move", swipetype="none" etc
 		}
 		else { // else consider this a vertical movement
 			dir = (distY < 0) ? 'up' : 'down'
-			handletouch(e, dir, 'move', swipeType, distY) // fire callback function
-																										// with params
-																										// dir="up|down",
-																										// phase="move",
-																										// swipetype="none" etc
+			handletouch(e, dir, 'move', swipeType, distY) // fire callback function with params dir="up|down", phase="move", swipetype="none" etc
 		}
 		e.preventDefault(); // prevent scrolling when inside DIV
 	}, {passive: false})
@@ -430,8 +418,7 @@ function ontouch(el, callback) {
 				swipeType = dir // set swipeType to either "top" or "down"
 			}
 		}
-		// Fire callback function with params dir="left|right|up|down",
-		// phase="end", swipetype=dir etc:
+		// Fire callback function with params dir="left|right|up|down", phase="end", swipetype=dir etc:
 		handletouch(e, dir, 'end', swipeType, (dir == 'left' || dir == 'right') ? distX : distY)
 		e.preventDefault();
 	}, {passive: false})
@@ -443,6 +430,7 @@ function openPillarPage (pillarID) {
 	$('.logo, nav > div').removeClass('reveal');
 	$('.wrapper, .bg').addClass('exit');
 	$('html, body').addClass('unlocked');
+	$('.pillar_top').removeClass('hidden'); // loading animation
 
 	$.ajax({
 		url: 'models/json.php',
@@ -451,8 +439,8 @@ function openPillarPage (pillarID) {
 		},
 		dataType: 'json'
 	}).done(function (data) {
-		//console.log('All data: ', data);
-		// move white section in pillar page up a bit for mobile devices in portrait mode.
+		$('.pillar_top').addClass('hidden');
+		// move white section in pillar page up a bit for mobile devices in portrait mode. Also, larger back button.
 		if (isMobile.phone === true && window.matchMedia("(orientation: portrait)").matches) {
 			$('#opening').css('margin', '-25rem auto 0');
 			$('.back').css('font-size', '7rem');
@@ -503,4 +491,17 @@ function openPillarPage (pillarID) {
 		//  Reveal content
 		$('.back, article').addClass('reveal');
 	});
+}
+
+// test if touch device
+function is_touch_device() {
+	var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
+	var mq = function (query) {
+		return window.matchMedia(query).matches;
+	}
+	if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+		return true;
+	}
+	var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
+	return mq(query);
 }
