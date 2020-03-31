@@ -15,6 +15,7 @@
   <script type="text/javascript" src="js/mousewheel.js"></script>
   <script type="text/javascript" src="js/viewport.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/isMobile.js"></script>
 </head>
 <body>
 
