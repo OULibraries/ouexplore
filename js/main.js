@@ -430,7 +430,10 @@ function openPillarPage (pillarID) {
 	$('.logo, nav > div').removeClass('reveal');
 	$('.wrapper, .bg').addClass('exit');
 	$('html, body').addClass('unlocked');
-	$('.pillar_top').removeClass('hidden'); // loading animation
+
+	setTimeout(function () {
+		$('.pillar_top').removeClass('hidden'); // loading animation
+	}, 2000)
 
 	$.ajax({
 		url: 'models/json.php',
@@ -439,7 +442,6 @@ function openPillarPage (pillarID) {
 		},
 		dataType: 'json'
 	}).done(function (data) {
-		$('.pillar_top').addClass('hidden');
 		// move white section in pillar page up a bit for mobile devices in portrait mode. Also, larger back button.
 		if (isMobile.phone === true && window.matchMedia("(orientation: portrait)").matches) {
 			$('#opening').css('margin', '-25rem auto 0');
@@ -490,6 +492,7 @@ function openPillarPage (pillarID) {
 
 		//  Reveal content
 		$('.back, article').addClass('reveal');
+		$('.pillar_top').addClass('hidden');
 	});
 }
 
