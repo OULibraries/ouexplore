@@ -2,7 +2,7 @@ var step = 1;
 
 $(document).ready(function () {
 	// hide and show the mouse/touch icons based on touch device or not.
-	if (isMobile.any === true) {
+	if (isMobile.any === true || is_touch_device()) {
 		$("#mouse_icon").addClass("img_hidden");
 		$("#touch_icon").removeClass("img_hidden");
 
@@ -13,8 +13,10 @@ $(document).ready(function () {
 			$("#touch_icon").css("width", "5rem");
 			$("#touch_icon").css("margin", "2rem auto 0rem");
 		} else { //landscape
-			if (isMobile.tablet) { //tablet
-				$(".continue").css("bottom", "15em");
+			var is_iPad1 = navigator.userAgent.match(/iPhone|iPad|iPod/i);
+			var is_iPad2 = navigator.userAgent.match(/10_15/i);
+			if (isMobile.tablet || is_iPad1 || is_iPad2) { //tablet
+				$(".continue").css("bottom", "4em");
 				$(".continue").css("font-size", "3rem");
 				$("#touch_icon").css("width", "5rem");
 				$("#touch_icon").css("margin", "2rem auto 0rem");
@@ -176,6 +178,10 @@ $(document).ready(function () {
 					deltaY = -1;
 				}
 				else {
+					deltaY = 0;
+				}
+
+				if (Math.abs(distance) < 15) {
 					deltaY = 0;
 				}
 
@@ -485,4 +491,17 @@ function openPillarPage (pillarID) {
 		//  Reveal content
 		$('.back, article').addClass('reveal');
 	});
+}
+
+// test if touch device
+function is_touch_device() {
+	var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
+	var mq = function (query) {
+		return window.matchMedia(query).matches;
+	}
+	if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+		return true;
+	}
+	var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
+	return mq(query);
 }
