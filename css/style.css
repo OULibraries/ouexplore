@@ -373,9 +373,11 @@ nav {
   left: 0;
   display: none; }
 
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
 .pillars {
   position: absolute;
-  top: calc( 50% + 95rem);
+  top: calc(50% + 95rem);
   left: 56%;
   -webkit-transform: translate3d(-60%, -50%, 0) rotate(50deg);
   transform: translate3d(-60%, -50%, 0) rotate(50deg);
@@ -405,66 +407,66 @@ nav {
     -webkit-transform-origin: 50% 100%;
     -ms-transform-origin: 50% 100%;
     transform-origin: 50% 100%; }
-    .pillars > div:nth-of-type(1) {
-      -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 1));
-      transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 1)); }
-    .pillars > div:nth-of-type(2) {
-      -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 2));
-      transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 2)); }
-    .pillars > div:nth-of-type(3) {
-      -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 3));
-      transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 3)); }
-    .pillars > div:nth-of-type(4) {
-      -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 4));
-      transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 4)); }
-    .pillars > div:nth-of-type(5) {
-      -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 5));
-      transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 5)); }
-    .pillars > div > a {
-      width: 100%;
-      height: auto;
-      display: block;
-      position: absolute;
-      -webkit-transform-origin: 50% 50%;
-      -ms-transform-origin: 50% 50%;
-      transform-origin: 50% 50%;
-      -webkit-transform: scale(0.9) rotate(20deg);
-      -ms-transform: scale(0.9) rotate(20deg);
-      transform: scale(0.9) rotate(20deg);
-      -webkit-transition: all 1s;
-      -o-transition: all 1s;
-      transition: all 1s;
-      background: #fff;
-      opacity: 1;
-      padding: 1.25rem; }
-      .pillars > div > a:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: #000;
-        bottom: 0;
-        right: 0;
-        opacity: 0.7;
-        -webkit-transition: all 0.6s;
-        -o-transition: all 0.6s;
-        transition: all 0.6s; }
-      .pillars > div > a img {
-        width: 100%;
-        height: auto;
-        display: block; }
-    .pillars > div.active {
-      z-index: 100; }
-      .pillars > div.active > a {
-        -webkit-transform: rotate(0deg) scale(1) !important;
-        -ms-transform: rotate(0deg) scale(1) !important;
-        transform: rotate(0deg) scale(1) !important;
-        -webkit-filter: blur(0);
-        filter: blur(0);
-        opacity: 1;
-        background: #fff; }
-        .pillars > div.active > a:after {
-          opacity: 0.2; }
+  .pillars > div:nth-of-type(1) {
+    -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc(40deg * 1));
+    transform: translate3d(-50%, -100%, 0) rotate(calc(40deg * 1)); }
+  .pillars > div:nth-of-type(2) {
+    -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc(40deg * 2));
+    transform: translate3d(-50%, -100%, 0) rotate(calc(40deg * 2)); }
+  .pillars > div:nth-of-type(3) {
+    -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc(40deg * 3));
+    transform: translate3d(-50%, -100%, 0) rotate(calc(40deg * 3)); }
+  .pillars > div:nth-of-type(4) {
+    -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc(40deg * 4));
+    transform: translate3d(-50%, -100%, 0) rotate(calc(40deg * 4)); }
+  .pillars > div:nth-of-type(5) {
+    -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc(40deg * 5));
+    transform: translate3d(-50%, -100%, 0) rotate(calc(40deg * 5)); }
+  .pillars > div > a {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: scale(0.9) rotate(20deg);
+    -ms-transform: scale(0.9) rotate(20deg);
+    transform: scale(0.9) rotate(20deg);
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    background: #fff;
+    opacity: 1;
+    padding: 1.25rem; }
+  .pillars > div > a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    bottom: 0;
+    right: 0;
+    opacity: 0.7;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    transition: all 0.6s; }
+  .pillars > div > a img {
+    width: 100%;
+    height: auto;
+    display: block; }
+  .pillars > div.active {
+    z-index: 100; }
+  .pillars > div.active > a {
+    -webkit-transform: rotate(0deg) scale(1) !important;
+    -ms-transform: rotate(0deg) scale(1) !important;
+    transform: rotate(0deg) scale(1) !important;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+    background: #fff; }
+  .pillars > div.active > a:after {
+    opacity: 0.2; }
 
 .pillarTitles {
   overflow: hidden;
@@ -492,61 +494,61 @@ nav {
     -webkit-transition: all 1s;
     -o-transition: all 1s;
     transition: all 1s; }
-    .pillarTitles > div > div {
-      -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-      flex-grow: 1;
-      -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
-      text-align: center;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center; }
-      .pillarTitles > div > div .accents {
-        -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-        flex-grow: 1;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        -webkit-transition: all .6s;
-        -o-transition: all .6s;
-        transition: all .6s; }
-        .pillarTitles > div > div .accents span {
-          background: #fff;
-          width: 0.4rem;
-          height: 2rem;
-          display: block;
-          border-radius: 10rem; }
-        .pillarTitles > div > div .accents.left {
-          margin-left: -0.4rem; }
-        .pillarTitles > div > div .accents.right {
-          margin-left: 0.4rem; }
-      .pillarTitles > div > div h2 {
-        margin: 3rem 10rem 0;
-        font-weight: 100; }
-        .pillarTitles > div > div h2 a {
-          color: #fff; }
-        .pillarTitles > div > div h2 span {
-          display: block; }
-          .pillarTitles > div > div h2 span:nth-of-type(1) {
-            font-size: 2rem;
-            font-style: italic;
-            font-family: "Times New Roman"; }
-          .pillarTitles > div > div h2 span:nth-of-type(2) {
-            font-size: 10rem;
-            margin: 1rem 0 0.5rem; }
-          .pillarTitles > div > div h2 span:nth-of-type(3) {
-            font-size: 4rem; }
+  .pillarTitles > div > div {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  .pillarTitles > div > div .accents {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-transition: all .6s;
+    -o-transition: all .6s;
+    transition: all .6s; }
+  .pillarTitles > div > div .accents span {
+    background: #fff;
+    width: 0.4rem;
+    height: 2rem;
+    display: block;
+    border-radius: 10rem; }
+  .pillarTitles > div > div .accents.left {
+    margin-left: -0.4rem; }
+  .pillarTitles > div > div .accents.right {
+    margin-left: 0.4rem; }
+  .pillarTitles > div > div h2 {
+    margin: 3rem 10rem 0;
+    font-weight: 100; }
+  .pillarTitles > div > div h2 a {
+    color: #fff; }
+  .pillarTitles > div > div h2 span {
+    display: block; }
+  .pillarTitles > div > div h2 span:nth-of-type(1) {
+    font-size: 2rem;
+    font-style: italic;
+    font-family: "Times New Roman"; }
+  .pillarTitles > div > div h2 span:nth-of-type(2) {
+    font-size: 10rem;
+    margin: 1rem 0 0.5rem; }
+  .pillarTitles > div > div h2 span:nth-of-type(3) {
+    font-size: 4rem; }
 
 .wrapper {
   background: #000000;
