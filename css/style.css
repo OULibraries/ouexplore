@@ -379,9 +379,9 @@ nav {
   left: 56%;
   -webkit-transform: translate3d(-60%, -50%, 0) rotate(50deg);
   transform: translate3d(-60%, -50%, 0) rotate(50deg);
-  -webkit-transform-origin: center center;
-  -ms-transform-origin: center center;
-  transform-origin: center center;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
   border: 2px solid yellow;
   width: 5rem;
   height: 5rem;
@@ -425,9 +425,9 @@ nav {
       height: auto;
       display: block;
       position: absolute;
-      -webkit-transform-origin: center center;
-      -ms-transform-origin: center center;
-      transform-origin: center center;
+      -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
       -webkit-transform: scale(0.9) rotate(20deg);
       -ms-transform: scale(0.9) rotate(20deg);
       transform: scale(0.9) rotate(20deg);
@@ -473,9 +473,9 @@ nav {
   left: 0;
   -webkit-transform: translate3d(0, -50%, 0);
   transform: translate3d(0, -50%, 0);
-  -webkit-transform-origin: center center;
-  -ms-transform-origin: center center;
-  transform-origin: center center;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
   width: 100vw;
   -webkit-transition: all .6s;
   -o-transition: all .6s;
