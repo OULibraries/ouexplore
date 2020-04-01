@@ -379,7 +379,7 @@ nav {
   top: calc(50% + 95rem);
   left: 56%;
   -webkit-transform: translate3d(-60%, -50%, 0) rotate(50deg);
-  transform: translate3d(-60%, -50%, 0) translateY(95rem) rotate(50deg);
+  transform: translate3d(-60%, -50%, 0) rotate(50deg);
   -webkit-transform-origin: center center;
   -ms-transform-origin: center center;
   transform-origin: center center;
