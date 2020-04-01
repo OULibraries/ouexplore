@@ -376,9 +376,10 @@ nav {
 .pillars {
   position: absolute;
   top: 100%;
+  top: calc(50% + 95rem);
   left: 56%;
   -webkit-transform: translate3d(-60%, -50%, 0) rotate(50deg);
-  transform: translate3d(-60%, -50%, 0) rotate(50deg);
+  transform: translate3d(-60%, -50%, 0) translateY(95rem) rotate(50deg);
   -webkit-transform-origin: center center;
   -ms-transform-origin: center center;
   transform-origin: center center;
@@ -406,19 +407,19 @@ nav {
     -ms-transform-origin: 50% 100%;
     transform-origin: 50% 100%; }
     .pillars > div:nth-of-type(1) {
-      -webkit-transform: translate3d(-100%, -60%, 0) rotate(40deg);
+      -webkit-transform: translate3d(-50%, -100%, 0) rotate(40deg);
       transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 1)); }
     .pillars > div:nth-of-type(2) {
-      -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 2));
+      -webkit-transform: translate3d(-50%, -100%, 0) rotate(80deg);
       transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 2)); }
     .pillars > div:nth-of-type(3) {
-      -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 3));
+      -webkit-transform: translate3d(-50%, -100%, 0) rotate(120deg);
       transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 3)); }
     .pillars > div:nth-of-type(4) {
-      -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 4));
+      -webkit-transform: translate3d(-50%, -100%, 0) rotate(160deg);
       transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 4)); }
     .pillars > div:nth-of-type(5) {
-      -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 5));
+      -webkit-transform: translate3d(-50%, -100%, 0) rotate(200deg);
       transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 5)); }
     .pillars > div > a {
       width: 100%;
