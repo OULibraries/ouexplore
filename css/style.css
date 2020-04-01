@@ -375,7 +375,7 @@ nav {
 
 .pillars {
   position: absolute;
-  top: 50%;
+  top: 100%;
   left: 56%;
   -webkit-transform: translate3d(-60%, -50%, 0) rotate(50deg);
   transform: translate3d(-60%, -50%, 0) rotate(50deg);
@@ -406,7 +406,7 @@ nav {
     -ms-transform-origin: 50% 100%;
     transform-origin: 50% 100%; }
     .pillars > div:nth-of-type(1) {
-      -webkit-transform: translate3d(-150%, -43%, 0) rotate(40deg);
+      -webkit-transform: translate3d(-100%, -60%, 0) rotate(40deg);
       transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 1)); }
     .pillars > div:nth-of-type(2) {
       -webkit-transform: translate3d(-50%, -100%, 0) rotate(calc( 40deg * 2));
