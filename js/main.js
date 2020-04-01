@@ -291,6 +291,8 @@ $(document).ready(function () {
 
 		var imgURL = $('.pillars > div:nth-of-type(' + step + ')').find('img').attr('src');
 
+		console.log(step);
+
 		if (step == 1) {
 			$('.pillars').css({'transform': 'translate3d(-50%, -50%, 0 ) rotate(-47deg)'});
 			$('.pillarTitles > div').css({'transform': 'translate3d( 0, 0, 0 )'});
