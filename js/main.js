@@ -15,7 +15,7 @@ $(document).ready(function () {
 		} else { //landscape
 			var is_iPad1 = navigator.userAgent.match(/iPhone|iPad|iPod/i);
 			var is_iPad2 = navigator.userAgent.match(/10_15/i);
-			if (isMobile.tablet || is_iPad1 || is_iPad2) { //tablet
+			if (isMobile.tablet === true || is_iPad1 || is_iPad2) { //tablet
 				$(".continue").css("bottom", "4em");
 				$(".continue").css("font-size", "3rem");
 				$("#touch_icon").css("width", "5rem");
@@ -220,8 +220,10 @@ $(document).ready(function () {
 
 	//  Load Templates from links
 	$(document).on('click', '#contribution', function (e) {
+		var url = isMobile.phone === true ? 'tpl/tpl-contribute_mobile.php' : 'tpl/tpl-contribute.php';
+
 		$.ajax({
-			url: 'tpl/tpl-contribute.php',
+			url: url,
 			dataType: 'html'
 		}).done(function (data) {
 			$('[role="main"]').html(data);
