@@ -1,4 +1,5 @@
 var step = 1;
+var pillarCarousel = null;
 
 $(document).ready(function () {
 	// hide and show the mouse/touch icons based on touch device or not.
@@ -95,6 +96,10 @@ $(document).ready(function () {
 				}, 300);
 				setTimeout(function () {
 					$(".leftBorder, .rightBorder, .topBorder, .bottomBorder").show();
+
+					pillarCarousel = setInterval(function(){
+						cyclePillars(-1);
+					}, 5000);
 				}, 2000);
 				setTimeout(function () {
 					$(".pillars > div:nth-of-type(1)").addClass("active");
@@ -143,6 +148,7 @@ $(document).ready(function () {
 	$(document).on('mousewheel', $.throttle(1500, true, function (event) {
 		if (!$('body').hasClass('unlocked') && !$('.introBannerMiddle').length) {
 			cyclePillars(event.deltaY);
+			clearInterval(pillarCarousel);
 		}
 		if ($('.introBannerMiddle > div:nth-of-type(2)').hasClass('reveal')) {
 			$('[data-action="loadPillars"]').click();
@@ -194,6 +200,7 @@ $(document).ready(function () {
 						openPillarPage(pillarID);
 					}
 				}
+				clearInterval(pillarCarousel);
 			}
 
 			// swipe up event for intro page
