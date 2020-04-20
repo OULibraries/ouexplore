@@ -98,8 +98,8 @@ function curl_get_contents($url) {
     curl_setopt($ch, CURLOPT_HEADER, 0);
     // Return the output instead of displaying it directly
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-
+    curl_setopt($ch, CURLOPT_ENCODING, '');
+    curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
