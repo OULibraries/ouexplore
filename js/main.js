@@ -162,6 +162,7 @@ $(document).ready(function () {
 	// when pillar is clicked on desktop. Calls pillars function to open the pillar in the center of the view.
 	$(document).on('click', '[data-action="openPillar"]', function() {
 		if ($('.main_container div.wrapper').hasClass('reveal') === true) {
+			clearInterval(pillarCarousel);
 			var pillarID = $('.pillars div.active a').data('pillar-id');
 			openPillarPage(pillarID);
 		}
