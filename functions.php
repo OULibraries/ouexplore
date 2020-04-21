@@ -6,23 +6,21 @@
 
         stream_context_set_default(array(
           'ssl'                => array(
-            'peer_name'          => 'generic-server',
-            'verify_peer'        => FALSE,
-            'verify_peer_name'   => FALSE,
-            'allow_self_signed'  => TRUE
-          )));
+          'peer_name'          => 'generic-server',
+          'verify_peer'        => FALSE,
+          'verify_peer_name'   => FALSE,
+          'allow_self_signed'  => TRUE
+        )));
 
         $url  = 'https://exploredata.libraries.ou.edu/restep/pillars?type=pillars';
         $json = curl_get_contents( $url );
         $data = json_decode( $json, TRUE);
 
-        foreach( $data as $key => $value){
-            $imgURL = 'https://exploredata.libraries.ou.edu/sites/default/files/' . $value['field_pillar_image']['filename'];
-
+        foreach($data as $key => $value) {
             $markup_image .=
                 '<div>'.
                     '<a href="#" data-action="openPillar" data-pillar-id="'.$value['tid'].'">'.
-                        '<img src="'.$imgURL.'" alt="Pillar ' . $value['tid'] . ' "/>'.
+                        '<img src="'.$value['field_pillar_image_url'].'" alt="Pillar ' . $value['tid'] . ' "/>'.
                     '</a>'.
                 '</div>';
 
@@ -65,23 +63,23 @@
         echo $html_code;
     }
 
-    function getIssues(){
+    function getIssues() {
         stream_context_set_default(array(
           'ssl'                => array(
             'peer_name'          => 'generic-server',
             'verify_peer'        => FALSE,
             'verify_peer_name'   => FALSE,
             'allow_self_signed'  => TRUE
-          )));
+        )));
 
         $url  = 'https://exploredata.libraries.ou.edu/restep/pillars?type=issue';
-        $json = curl_get_contents( $url );
+        $json = curl_get_contents($url);
         $data = json_decode( $json, TRUE);
 
-        foreach( $data as $key => $value) {
+        foreach($data as $key => $value) {
             $markup = (
                 '<div class="issueItem">'.
-                    '<div class="img" style="background: url(https://exploredata.libraries.ou.edu/sites/default/files/'.$value['field_issue_image']['filename'].') no-repeat center center / cover;"></div>'.
+                    '<div class="img" style="background: url('.$value['field_issue_image_url'].') no-repeat center center / cover;"></div>'.
                     '<div><h2><a>'.$value['name'].'</a></h2><div class="description">'.$value['description'].'</div></div>'.
                 '</div>'
             );
@@ -104,12 +102,12 @@ function curl_get_contents($url) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-//    curl_setopt($ch, CURLOPT_HEADER, 0);
+    //    curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
     // Execute the curl session
     $output = curl_exec($ch);
     header('Content-type: application/json');
-//    error_log('blah blah: ' . $output);
+    //    error_log('blah blah: ' . $output);
     // Close the curl session
     curl_close($ch);
     // Return the output as a variable
