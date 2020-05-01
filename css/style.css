@@ -175,7 +175,7 @@ nav {
   #intro.exit {
     -webkit-box-shadow: inset 0 0 0 0rem #fff, inset 0 100vh 0 black;
     box-shadow: inset 0 0 0 0rem #fff, inset 0 100vh 0 black; }
-  #intro .continue {
+  #intro .continue, #pillarsScroll .continue, #pillarsScroll-two .continue-two {
     position: absolute;
     text-transform: uppercase;
     bottom: 4rem;
@@ -190,13 +190,26 @@ nav {
     transition: opacity 1s;
     opacity: 0;
     font-weight: 600; }
-    #intro .continue img {
+    #intro .continue img, #pillarsScroll .continue img, #pillarsScroll-two .continue-two img {
       display: block;
       margin: 1rem auto 0rem;
       width: 3rem;
       height: auto; }
     #intro .continue.reveal {
       opacity: 1; }
+
+.down-to-pillars {
+  left: 48%;
+  position: absolute;
+  margin-top: -5%;
+  -webkit-animation: pulse 4s infinite;
+  -o-animation: pulse 4s infinite;
+  animation: pulse 4s infinite;
+}
+
+#select-pillar {
+  animation-delay: 4s;
+}
 
 .introMessage {
   position: absolute;
@@ -372,6 +385,13 @@ nav {
   bottom: 0;
   left: 0;
   display: none; }
+
+.scrollTwo {
+  position: absolute;
+  bottom: 25px;
+  right: auto;
+  left: 48%;
+}
 
 .pillars {
   position: absolute;
@@ -1213,8 +1233,44 @@ article {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); } }
 
+@-webkit-keyframes pulse-two {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  50% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -1rem, 0);
+    transform: translate3d(0, -1rem, 0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes pulse-two {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  25% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -1rem, 0);
+    transform: translate3d(0, -1rem, 0); }
+  50% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);}}
+
 .img_hidden {
   display:none !important;
+}
+
+#arrows-down {
+  color: #7b1517;
 }
 
 .cssload-spin-box {

@@ -59,6 +59,7 @@
         $html_code .= $markup_image;
         $html_code .= '</div><div class="pillarTitles"><div>';
         $html_code .= $markup;
+//        $html_code .= '<div>last div</div>';
         $html_code .= '</div></div><div class="markers"><div></div><div></div><div></div><div></div><div></div></div></div>';
         echo $html_code;
     }

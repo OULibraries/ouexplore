@@ -24,7 +24,7 @@
   <a href="#" class="back"><span style="display:none;">Back Button</span><i class="fa fa-arrow-left"></i></a>
   <a href="" class="logo"><img src="img/ou-logo-color.png" alt="OU Logo"/></a>
   <div>
-    <a href="#" id="contribution">Contribute</a>
+    <a href="#" id="contribution"></a>
     <a class="open_menu" href="#" data-action="openMenu"><span style="display:none;">Menu</span><i class="fa fa-bars"></i></a>
   </div>
 </nav>

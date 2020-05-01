@@ -11,15 +11,15 @@ $(document).ready(function () {
 		if (window.matchMedia("(orientation: portrait)").matches) { //portrait
 			$(".continue").css("bottom", "29rem");
 			$(".continue").css("font-size", "3rem");
-			$("#touch_icon").css("width", "5rem");
+            $("#touch_icon").css("width", "5rem");
 			$("#touch_icon").css("margin", "2rem auto 0rem");
 		} else { //landscape
 			var is_iPad1 = navigator.userAgent.match(/iPhone|iPad|iPod/i);
 			var is_iPad2 = navigator.userAgent.match(/10_15/i);
 			if (isMobile.tablet === true || is_iPad1 || is_iPad2) { //tablet
-				$(".continue").css("bottom", "4em");
-				$(".continue").css("font-size", "3rem");
-				$("#touch_icon").css("width", "5rem");
+				$(".continue").css("bottom", "3em");
+				$(".continue").css("font-size", "1rem");
+				$("#touch_icon").css("width", "3rem");
 				$("#touch_icon").css("margin", "2rem auto 0rem");
 			}
 
@@ -61,10 +61,10 @@ $(document).ready(function () {
 		$(".logo, nav > div, #intro").addClass("reveal");
 	}, 7000);
 	
-	setTimeout( function(){
-		$(".continue").addClass("reveal");
-		$(".continue").css({"animation":"pulse 4s infinite"});
-	}, 8000 );
+	// setTimeout( function(){
+	// 	$(".continue").addClass("reveal");
+	// 	$(".continue").css({"animation":"pulse 4s infinite"});
+	// }, 8000 );
 
 	setTimeout( function(){
 		$(".continue").addClass("reveal");
@@ -81,6 +81,24 @@ $(document).ready(function () {
 			$('.cssload-spin-box').removeClass('hidden');
 		}, 600);
 
+
+        setTimeout( function(){
+            $(".continue").addClass("reveal");
+            $(".continue").css({"animation":"pulse-two 8s ease-out infinite"});
+        }, 4000 );
+
+        setTimeout( function(){
+            $(".continue-two").addClass("reveal");
+            $(".continue-two").css({"animation":"pulse-two 8s 4s infinite"});
+            if (isMobile.any === true || is_touch_device()) {
+                $("#mouse_icon_p").addClass("img_hidden");
+                $("#touch_icon_p").removeClass("img_hidden");
+                $("#mouse_icon_ps").addClass("img_hidden");
+                $("#touch_icon_ps").removeClass("img_hidden");
+            }
+        }, 4000 );
+
+
 		// Load pillar content
 		setTimeout(function () {
 			$.ajax({
@@ -95,7 +113,42 @@ $(document).ready(function () {
 					$(".wrapper, .bg").addClass("reveal");
 				}, 300);
 				setTimeout(function () {
-					$(".leftBorder, .rightBorder, .topBorder, .bottomBorder").show();
+					$(".leftBorder, .rightBorder, .topBorder, .bottomBorder, .scrollTwo, .scrollTwo-two").show();
+                    if (isMobile.any === true || is_touch_device()) {
+                        $("#mouse_icon_p").addClass("img_hidden");
+                        $("#touch_icon_p").removeClass("img_hidden");
+                        $("#mouse_icon_ps").addClass("img_hidden");
+                        $("#touch_icon_ps").removeClass("img_hidden");
+
+                        if (window.matchMedia("(orientation: portrait)").matches) { //portrait
+                            $(".continue").css("bottom", "29rem");
+                            $(".continue").css("font-size", "3rem");
+                            $(".continue-two").css("bottom", "29rem");
+                            $(".continue-two").css("font-size", "3rem");
+                            $("#touch_icon_p").css("width", "5rem");
+                            $("#touch_icon_p").css("margin", "2rem auto 0rem");
+                            $("#touch_icon_ps").css("width", "5rem");
+                            $("#touch_icon_ps").css("margin", "2rem auto 0rem");
+                        } else { //landscape
+                            var is_iPad1 = navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                            var is_iPad2 = navigator.userAgent.match(/10_15/i);
+                            if (isMobile.tablet === true || is_iPad1 || is_iPad2) { //tablet
+                                $(".continue").css("bottom", "3em");
+                                $(".continue").css("font-size", "1rem");
+                                $(".continue-two").css("bottom", "3em");
+                                $(".continue-two").css("font-size", "1rem");
+                                $("#touch_icon_p").css("width", "3rem");
+                                $("#touch_icon_p").css("margin", "2rem auto 0rem");
+                                $("#touch_icon_ps").css("width", "3rem");
+                                $("#touch_icon_ps").css("margin", "2rem auto 0rem");
+                            }
+
+                            if (isMobile.phone) {
+                                $(".continue").css("bottom", "10em");
+                            }
+                        }
+
+                    }
 
 					pillarCarousel = setInterval(function(){
 						cyclePillars(-1);
@@ -161,6 +214,8 @@ $(document).ready(function () {
 
 	// when pillar is clicked on desktop. Calls pillars function to open the pillar in the center of the view.
 	$(document).on('click', '[data-action="openPillar"]', function() {
+        $(".continue").removeClass("reveal").addClass("hidden");
+        $(".continue-two").removeClass("reveal").addClass("hidden");
 		if ($('.main_container div.wrapper').hasClass('reveal') === true) {
 			clearInterval(pillarCarousel);
 			var pillarID = $('.pillars div.active a').data('pillar-id');
@@ -197,6 +252,8 @@ $(document).ready(function () {
 					cyclePillars(deltaY);
 				} else { // 0 is a click with no movement. Choose pillar
 					if ($('.main_container div.wrapper').hasClass('reveal') === true) {
+                        $(".continue-two").removeClass("reveal").addClass("hidden");
+                        $(".continue").removeClass("reveal").addClass("hidden");
 						var pillarID = $('.pillars div.active a').data('pillar-id');
 						openPillarPage(pillarID);
 					}
@@ -217,6 +274,8 @@ $(document).ready(function () {
 		$('html, body').animate({scrollTop: 0}, 'slow', function () {
 			$('.back, article').removeClass('reveal');
 			setTimeout(function () {
+                $(".continue").removeClass("hidden").addClass("reveal");
+                $(".continue-two").removeClass("hidden").addClass("reveal");
 				$('html, body').removeClass('unlocked');
 				$('.wrapper, .bg').removeClass('exit');
 				$('.pillars, .pillarTitles').removeClass('minimize');
@@ -452,6 +511,7 @@ function openPillarPage (pillarID) {
 		// $('.pillar_top').addClass('hidden');
 		// move white section in pillar page up a bit for mobile devices in portrait mode. Also, larger back button.
 		if (isMobile.phone === true && window.matchMedia("(orientation: portrait)").matches) {
+			$('#arrows-down').css('margin', '-230px 0 0 0');
 			$('#opening').css('margin', '-25rem auto 0');
 			$('.back').css('font-size', '7rem');
 			$('.back').css('width', '10rem');
