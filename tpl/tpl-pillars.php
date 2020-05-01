@@ -7,15 +7,31 @@
         <!--<div class="pillar_top hidden cssload-spin-box"></div>-->
         <?php getPillars(); ?>
 <!--  php above contains rest of html for wrapper dev-->
-
 <div class="leftBorder"></div>
 <div class="rightBorder"></div>
 <div class="bottomBorder"></div>
 <div class="topBorder"></div>
+<!--<h1 class="scrollTwo continue">hello</h1>-->
 
+<div id="pillarsScroll">
+    <a class="scrollTwo continue">
+        <p id="keep-scrolling">Keep Scrolling</p>
+        <img id="mouse_icon_p" src="img/mouse.svg" alt="mouse icon indicating to scroll down"/>
+        <img id="touch_icon_p" class="img_hidden" src="img/touch.svg" alt="touch icon indicating to scroll down"/>
+    </a>
+</div>
 
-<article>
+<div id="pillarsScroll-two">
+    <a class="scrollTwo-two continue-two">
+        <p id="select-pillar">Select a Pillar</p>
+        <img id="mouse_icon_ps" src="img/mouse.svg" alt="mouse icon indicating to scroll down"/>
+        <img id="touch_icon_ps" class="img_hidden" src="img/touch.svg" alt="touch icon indicating to scroll down"/>
+    </a>
+</div>
+
+    <article>
     <h1 style="display: none">An individual Pillar with stories</h1>
+        <div class="down-to-pillars" id="arrows-down"><i class="fa fa-angle-double-down fa-lg aria-hidden="true"></i> </div>
     <section id="opening">
         <div class="container"></div>
         <div id="disclaimer">* The metrics below are for the 2018 - 2019 school year.</div>
